@@ -46,19 +46,10 @@ function encriptarTexto() {
         });
       
         const resultado = fraseEncriptada.join(' ');
-        console.log(resultado);
-        //document.getElementById('encriptado').value = resultado; 
-        //activandoBotones();
-        document.getElementById("btnDesencriptar").removeAttribute('disabled');
-        document.getElementById("btnEncriptador").setAttribute('disabled','true');
-        document.getElementById('textoAEncriptar').value="";
-        document.getElementById("encriptado").focus();
-        document.getElementById('encriptado').removeAttribute("hidden");
-        //document.getElementById("encriptado").disabled = true;
+        //console.log(resultado);
         document.getElementById('encriptado').value = resultado;
-        btnDesencriptar.setAttribute('style','color: rgb(242, 140, 140)');
-        btnEncriptador.setAttribute('style','color: gray')
-      
+        //document.getElementById('encriptado').value = resultado; 
+        accionesEncriptar();
     }
 }
 
@@ -83,13 +74,10 @@ function desencriptarTexto(e) {
     });
 
     const resultado = fraseEncriptada.join(' ');
-    console.log(resultado);
+    //console.log(resultado);
     document.getElementById('encriptado').value = resultado;
-    document.getElementById("btnDesencriptar").setAttribute('disabled','true');
-    document.getElementById("btnEncriptador").setAttribute('disabled','true');
-    document.getElementById('textoAEncriptar').value="";
-    document.getElementById("textoAEncriptar").focus();
-    btnDesencriptar.setAttribute("style","color: gray");
+    accionesDesencriptar();
+    
 }
 
 function mostrarMnesaje() {
@@ -101,15 +89,28 @@ function validar() {
     btnEncriptador.setAttribute('style','color: rgb(242, 140, 140)');
 }
 
-/*
-function activandoBotones() {
-   
-    document.getElementById("btnDesencriptar").disabled = false;
-    document.getElementById("btnEncriptador").disabled = true;
+
+function accionesEncriptar() {
+
+    document.getElementById("btnDesencriptar").removeAttribute('disabled');
+    document.getElementById("btnEncriptador").setAttribute('disabled','true');
     document.getElementById('textoAEncriptar').value="";
     document.getElementById("encriptado").focus();
     document.getElementById('encriptado').removeAttribute("hidden");
-}*/
+    //document.getElementById("encriptado").disabled = true;
+    btnDesencriptar.setAttribute('style','color: rgb(242, 140, 140)');
+    btnEncriptador.setAttribute('style','color: gray')
+}
+
+function accionesDesencriptar() {
+    
+    document.getElementById("btnDesencriptar").setAttribute('disabled','true');
+    document.getElementById("btnEncriptador").setAttribute('disabled','true');
+    document.getElementById('textoAEncriptar').value="";
+    document.getElementById("textoAEncriptar").focus();
+    btnDesencriptar.setAttribute("style","color: gray");
+}
+
 
 
 
