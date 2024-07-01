@@ -24,9 +24,7 @@ function cargarDatos() {
 }
 
 
-
-
-
+//Funcion para encriptar la frase ingresada en el input
 function encriptarTexto() {
     let texto = document.getElementById('textoAEncriptar').value;
     //console.log(texto); 
@@ -51,19 +49,21 @@ function encriptarTexto() {
         console.log(resultado);
         //document.getElementById('encriptado').value = resultado; 
         //activandoBotones();
-        document.getElementById("btnDesencriptar").disabled = false;
-        document.getElementById("btnEncriptador").disabled = true;
+        document.getElementById("btnDesencriptar").removeAttribute('disabled');
+        document.getElementById("btnEncriptador").setAttribute('disabled','true');
         document.getElementById('textoAEncriptar').value="";
         document.getElementById("encriptado").focus();
         document.getElementById('encriptado').removeAttribute("hidden");
         //document.getElementById("encriptado").disabled = true;
         document.getElementById('encriptado').value = resultado;
-        btnDesencriptar.style.color = "rgb(242, 140, 140)";
-        btnEncriptador.style.color = "gray";
+        btnDesencriptar.setAttribute('style','color: rgb(242, 140, 140)');
+        btnEncriptador.setAttribute('style','color: gray')
       
     }
 }
 
+
+//Funcion para desencriptar la frase ingresada en el input
 function desencriptarTexto(e) {
     e.preventDefault();  
     let texto = document.getElementById('encriptado').value;
@@ -85,11 +85,11 @@ function desencriptarTexto(e) {
     const resultado = fraseEncriptada.join(' ');
     console.log(resultado);
     document.getElementById('encriptado').value = resultado;
-    document.getElementById("btnDesencriptar").disabled = true;
-    document.getElementById("btnEncriptador").disabled = true;
+    document.getElementById("btnDesencriptar").setAttribute('disabled','true');
+    document.getElementById("btnEncriptador").setAttribute('disabled','true');
     document.getElementById('textoAEncriptar').value="";
     document.getElementById("textoAEncriptar").focus();
-    btnDesencriptar.style.color = "gray";
+    btnDesencriptar.setAttribute("style","color: gray");
 }
 
 function mostrarMnesaje() {
@@ -97,8 +97,8 @@ function mostrarMnesaje() {
 }
 
 function validar() {
-    document.getElementById("btnEncriptador").removeAttribute("disabled");
-    btnEncriptador.style.color = "rgb(242, 140, 140)";
+    document.getElementById("btnEncriptador").removeAttribute('disabled');
+    btnEncriptador.setAttribute('style','color: rgb(242, 140, 140)');
 }
 
 /*
