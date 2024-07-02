@@ -3,13 +3,13 @@
 let btnEncriptador = document.getElementById('btnEncriptador');
 let btnDesencriptar = document.getElementById('btnDesencriptar');
 let texto = document.getElementById('textoAEncriptar');
+let inputEncriptado = document.getElementById("encriptado");
 
 
 texto.addEventListener("keypress",validar);
 btnEncriptador.addEventListener("click",encriptarTexto);
 btnDesencriptar.addEventListener("click",desencriptarTexto);
 document.addEventListener("DOMContentLoaded", cargarDatos);
-
 
 
 function asignarTextoElemento(elemento, texto) {
@@ -92,22 +92,22 @@ function validar() {
 
 function accionesEncriptar() {
 
-    document.getElementById("btnDesencriptar").removeAttribute('disabled');
-    document.getElementById("btnEncriptador").setAttribute('disabled','true');
-    document.getElementById('textoAEncriptar').value="";
-    document.getElementById("encriptado").focus();
-    document.getElementById('encriptado').removeAttribute("hidden");
+    btnDesencriptar.removeAttribute('disabled');
+    btnEncriptador.setAttribute('disabled','true');
+    texto.value="";
+    inputEncriptado.focus();
+    inputEncriptado.removeAttribute("hidden");
     //document.getElementById("encriptado").disabled = true;
     btnDesencriptar.setAttribute('style','color: rgb(242, 140, 140)');
     btnEncriptador.setAttribute('style','color: gray')
 }
 
 function accionesDesencriptar() {
-    
-    document.getElementById("btnDesencriptar").setAttribute('disabled','true');
-    document.getElementById("btnEncriptador").setAttribute('disabled','true');
-    document.getElementById('textoAEncriptar').value="";
-    document.getElementById("textoAEncriptar").focus();
+
+    btnDesencriptar.setAttribute('disabled','true');
+    btnEncriptador.setAttribute('disabled','true');
+    texto.value="";
+    texto.focus();
     btnDesencriptar.setAttribute("style","color: gray");
 }
 
