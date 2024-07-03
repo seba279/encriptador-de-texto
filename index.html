@@ -7,20 +7,38 @@
     <link rel="stylesheet" href="./styles/style.css">
 </head>
 <body>
-    <section class="contenido"> 
-        <div class="contenido__izquierdo">
-            <h1></h1>
-            <input type="text" class="contenido__izquierdo__texto" id="textoAEncriptar">
-            <div class="contenido__izquierdo__botones">
-                <button type="button" class="contenido__izquierdo__botones_boton" disabled id="btnEncriptador">Encriptar</button>
-                <button type="button" class="contenido__izquierdo__botones_boton" disabled id="btnDesencriptar">Desencriptar</button>
-            </div>
-        </div>
-        <div class="contenido__derecho">
-            <input type="text" class="contenido__derecho__texto" id="encriptado" hidden>
-        </div>
-       
-    </section>
+    <main class="contenido">
+            <!--<div class="contenido__izquierdo">-->
+                <section class="contenido__titulo">
+                    <h1></h1>
+                </section>
+                <section class="contenido__principal">
+                    <div class="contenido__principal__izquierdo">
+                        <textarea class="contenido__principal__izquierdo__textArea" id="textoAEncriptar"></textarea>
+                        <!--<input type="text" class="contenido__izquierdo__texto" id="textoAEncriptar">-->
+                        <div class="contenido__principal__izquierdo__botones">
+                            <button type="button" class="contenido__principal__izquierdo__botones__boton" disabled id="btnEncriptador">Encriptar</button>
+                            <button type="button" class="contenido__principal__izquierdo__botones__boton" disabled id="btnDesencriptar">Desencriptar</button>
+                        </div>
+                    </div>
+                    <div class="contenido__principal__derecho">
+                        <textarea class="contenido__principal__derecho__textArea" id="encriptado"></textarea>
+                        <button class="contenido__principal__derecho__boton">Copiar</button>
+                        <!--<input type="text" class="contenido__principal__derecho__input" id="encriptado">-->
+                    </div>
+                </section>
+                
+                
+                
+                <!--<div class="contenido__izquierdo__botones">-->
+                   
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div class="contenido__derecho">-->
+                
+            <!--</div>-->
+    </main>
+    
     <script src="./js/app.js"></script>
 </body>
 </html>

@@ -6,36 +6,59 @@ body{
   display: flex;
   justify-content: center;
   margin: 1rem;
+  height: 100vh;
+  box-sizing: border-box;
 }
+ 
 
-h1 {
-    color: #e15e6e;
-    font-size: 22px;
-}
-
-input {
-    outline:none;
-}
 .contenido {
     display: flex;
-    justify-content: center;
-    align-items: self-start;
-    padding: 20px;
-    gap: 20px;
+    align-items: center;
+    flex-direction: column;
 }
 
-.contenido__izquierdo__texto {
-    width: 25rem;
+.contenido__titulo {
+    color: #e15e6e;
+    font-size: 1.3rem;
+}
+
+.contenido__principal {
+   display: flex;
+   justify-content: center;
+   padding: 2rem;
+   gap: 1rem;
+}
+
+.contenido__principal__izquierdo {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+}  
+
+.contenido__principal__derecho__textArea, .contenido__principal__izquierdo__textArea {
+    width: 20rem;
     height: 25rem;
-    margin-bottom: 0.5rem;
-    border-radius: 12px;
+    padding: 15px;
     border: 2px solid rgb(242, 140, 140);
-    border-left: 10px solid rgb(242, 140, 140);
-
+    border-radius: 8px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+    font-size: 14px;
+    font-family: 'Courier New', Courier, monospace;
+    resize: vertical; /* Permite cambiar el tamaño verticalmente */
+    outline: none; 
 }
 
-.contenido__izquierdo__botones_boton {
-    width: 12.5rem;
+.contenido__principal__izquierdo__textArea {
+    border-left: 10px solid rgb(242, 140, 140);
+}
+
+.contenido__principal__izquierdo__botones {
+    
+}
+
+.contenido__principal__izquierdo__botones__boton {
+    width: 10rem;
     height: 3rem;
     border-radius: 12px;
     background-color: white;
@@ -43,8 +66,7 @@ input {
     border-right: 10px solid rgb(242, 140, 140);
 }
 
-
-.contenido__izquierdo__botones_boton:hover {
+.contenido__principal__izquierdo__botones__boton:hover {
     /*background-color: rgb(242, 140, 140);*/
     background-color: #F7F7F7;
     /*color: #F7F7F7;*/
@@ -53,12 +75,22 @@ input {
     border-right: 1px solid rgb(242, 140, 140);
 }
 
+.contenido__principal__derecho {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
 
-.contenido__derecho__texto{
-    width: 25rem;
-    height: 4rem;
-    margin-top: 1.5rem;
-    border-radius: 12px;
-    border: 2px solid rgb(242, 140, 140);
+.contenido__principal__derecho__textArea {
     border-right: 10px solid rgb(242, 140, 140);
+}
+
+.contenido__principal__derecho__boton{
+    width: 100%;
+    height: 10%;
+    border-radius: 12px;
+    background-color: white;
+    border: 1px solid rgb(242, 140, 140);
+    border-right: 10px solid rgb(242, 140, 140);
+    color: #e15e6e;
 }
