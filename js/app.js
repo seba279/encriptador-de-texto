@@ -23,9 +23,27 @@ function cargarDatos() {
     btnEncriptador.disabled = "true";
 }
 
+/*
+
+function verificarLetras() {
+    const textarea = document.getElementById('textoAEncriptar');
+    const valor = textarea.value;
+    
+    const regex = /^[a-z\s]+$/;
+
+    if (!regex.test(valor)) {
+        alert('Solo se permiten letras minúsculas sin acentos, sin caracteres especiales ni números.');
+        valor.value = "";
+    }else {
+        btnEncriptador.addEventListener("click",encriptarTexto);
+    }
+
+}*/
+
 
 //Funcion para encriptar la frase ingresada en el input
 function encriptarTexto() {
+    //console.log(verificarLetras());
     let texto = document.getElementById('textoAEncriptar').value;
     //console.log(texto); 
 
@@ -87,6 +105,7 @@ function mostrarMnesaje() {
 function validar() {
     document.getElementById("btnEncriptador").removeAttribute('disabled');
     btnEncriptador.setAttribute('style','color: rgb(242, 140, 140)');
+    //verificarLetras();
 }
 
 
