@@ -1,36 +1,3 @@
-<!--
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Encriptador de Texto</title>
-    <link rel="stylesheet" href="./styles/style.css">
-</head>
-<body>
-    <main class="contenido">
-        <section class="contenido__titulo">
-            <h1></h1>
-        </section>
-        <section class="contenido__principal">
-            <div class="contenido__principal__izquierdo">
-                <textarea class="contenido__principal__izquierdo__textArea" id="textoAEncriptar"></textarea>
-                <div class="contenido__principal__izquierdo__botones">
-                    <button type="button" class="contenido__principal__izquierdo__botones__boton" disabled id="btnEncriptador">Encriptar</button>
-                    <button type="button" class="contenido__principal__izquierdo__botones__boton" disabled id="btnDesencriptar">Desencriptar</button>
-                </div>
-            </div>
-            <div class="contenido__principal__derecho">
-                <textarea class="contenido__principal__derecho__textArea" id="encriptado"></textarea>
-                <button class="contenido__principal__derecho__boton">Copiar</button>
-            </div>
-        </section>
-    </main>
-    
-    <script src="./js/app.js"></script>
-</body>
-</html>-->
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -51,7 +18,7 @@
                 <h2 class="contenido__desencriptador__titulo">palabra encriptada</h2>
                 <input type="checkbox" class="contenido__desencriptador__checkbox">
             </div>
-            <button type="button" class="contenido__desencriptador__boton">Desencriptar</button>
+            <button type="button" class="contenido__desencriptador__boton" id="botonDesencriptar">Desencriptar</button>
             <div class="contenido__encriptador__mensaje" id="mensaje"></div>
         </section>
     </main>
