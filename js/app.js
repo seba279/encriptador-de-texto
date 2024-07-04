@@ -1,5 +1,4 @@
-
-
+/*
 let btnEncriptador = document.getElementById('btnEncriptador');
 let btnDesencriptar = document.getElementById('btnDesencriptar');
 let texto = document.getElementById('textoAEncriptar');
@@ -111,7 +110,43 @@ function accionesDesencriptar() {
     btnDesencriptar.setAttribute("style","color: gray");
 }
 
+*/
 
+let mensaje = document.getElementById('mensaje');
+let btnEncriptar = document.getElementById('botonEncriptar');
+
+btnEncriptar.addEventListener("click", validarEntrada);
+
+
+function validarEntrada() {
+    let frase = document.getElementById('textAreaEncriptada').value;
+
+    
+    const regex = /^[a-z]*$/;
+
+    if (!regex.test(frase)) {
+
+        mensaje.style.display = 'flex';
+        mensaje.textContent = "Solo se permiten letras minusculas y sin acentos";
+        setTimeout(() => {
+            mensaje.style.display = 'none';
+        }, 2000)
+
+        document.getElementById('textAreaEncriptada').value = "";
+        document.getElementById('textAreaEncriptada').focus();
+
+    }else if(frase == ""){
+        mensaje.style.display = 'flex';
+        mensaje.textContent = "Ingrese una frase por favor";
+        setTimeout(() => {
+            mensaje.style.display = 'none';
+        }, 2000)
+
+        document.getElementById('textAreaEncriptada').focus();
+    }else {
+        mensaje.innerHTML = "Encriptando";
+    }
+}
 
 
 
