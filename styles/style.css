@@ -1,7 +1,8 @@
-*{
+* {
     margin: 0;
     padding: 0;
 }
+<<<<<<< HEAD
 body{
   display: flex;
   justify-content: center;
@@ -10,8 +11,25 @@ body{
   box-sizing: border-box;
 }
  
+=======
+
+body {
+    box-sizing: border-box;
+    margin:auto
+}
+
+h1 {
+    font-size: 28px;
+    padding: 10px;
+    color: rgba(255, 0, 0, 0.818);
+}
+
+>>>>>>> desarrollo
 .contenido {
+    width: 100%;
+    height: 100vh;
     display: flex;
+<<<<<<< HEAD
     align-items: center;
     flex-direction: column;
 }
@@ -88,4 +106,105 @@ body{
     border: 1px solid rgb(242, 140, 140);
     border-right: 10px solid rgb(242, 140, 140);
     color: #e15e6e;
+=======
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.contenido__encriptador {
+    width: 50%;
+}
+
+.contenido__encriptador__mensaje {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    margin-top: 10px;
+    padding: 10px;
+    color: white;
+    background-color: rgba(255, 0, 0, 0.818);
+    font-size: 18px;
+    margin-bottom: 10px;
+    height: auto;
+    word-wrap: break-word;
+    text-align: justify;
+    padding: 15px;
+}
+
+.contenido__encriptador__elementos {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.1rem;
+    box-sizing: border-box;
+}
+
+.contenido__encriptador__elementos__texto {
+    height: 150px;
+    border: 2px solid gray;
+    border-radius: 10px;
+    outline: none;
+    padding: 10px;
+}
+
+.contenido__encriptador__elementos__boton {
+    position: relative;
+    background-color: black;
+    color: white;
+    left: 485px;
+    width: 200px;
+    height: 40px;
+    text-align: center;
+    margin-top: 10px;
+    border-radius: 10px;
+}
+
+.contenido__encriptador__elementos__boton:hover {
+    background-color: #f7f7f7;
+    color: black;
+    border: none;
+}
+
+.contenido__desencriptador {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin-top: 20px;
+    border-radius: 10px;
+    background-color: rgba(160, 236, 83, 0.471);
+    /*background-color: rgba(140, 236, 44, 0.471);*/
+    border-left: 8px solid rgba(255, 0, 0, 0.818);
+    resize: vertical;
+}
+
+.contenido__desencriptador h2 {
+    font-size: 18px;
+    padding: 10px;
+    color: #272727;
+    
+}
+
+.contenido__desencriptador__boton {
+    margin-top: 10px;
+    width: 100%;
+    background-color: black;
+    color: white;
+    height: 40px;
+    text-align: center;
+    margin-top: 15px;
+    border-radius: 10px;
+}
+
+.contenido__desencriptador__boton:hover {
+    background-color: #f7f7f7;
+    color: black;
+    border: none;
+}
+
+.contenido__desencriptador__checkbox {
+    accent-color: rgba(255, 0, 0, 0.818);
+>>>>>>> desarrollo
 }
