@@ -4,12 +4,15 @@ let textArea = document.getElementById('textAreaEncriptada')
 let btnDesencriptar = document.getElementById('botonDesencriptar');
 
 btnEncriptar.addEventListener("click", validarEntrada);
-btnDesencriptar.addEventListener("click", desencriptarTexto)
+btnDesencriptar.addEventListener("click", desencriptarTexto);
 
 
+//var arrayFrases =[];
 
+//Funcion para validar letras ingresadas
 function validarEntrada() {
     let frase = document.getElementById('textAreaEncriptada').value;
+    document.getElementById('mensaje').style.backgroundColor = "red";
 
     const regex = /^[a-z ]*$/;
 
@@ -33,21 +36,29 @@ function validarEntrada() {
 
         document.getElementById('textAreaEncriptada').focus();
     }else {
+
         const resultado = encriptarTexto();
         //console.log(resultado);
        
         mensaje.style.display = 'flex';
-        document.getElementById('mensaje').innerText = resultado;
+
+        arrayFrases.push(resultado);
+        //console.log(arrayFrases);
+    
+        document.getElementById('mensaje').innerHTML = resultado;
         document.getElementById('textAreaEncriptada').value = "";
         document.getElementById('textAreaEncriptada').focus();
+        document.getElementById('botonDesencriptar').removeAttribute('disabled');
+        document.getElementById('botonEncriptar').setAttribute("disabled", "true");
+        document.getElementById('botonEncriptar').setAttribute("display", "none");
+        document.getElementById('textAreaEncriptada').setAttribute("disabled", "true");
     }
-
 }
+
 
 //Funcion para encriptar la frase ingresada
 function encriptarTexto() {
     let texto = document.getElementById('textAreaEncriptada').value;
-    //console.log(texto); 
 
     let frases = texto.split(' ');
     let fraseEncriptada = [];
@@ -63,15 +74,16 @@ function encriptarTexto() {
     });
     
     const resultado = fraseEncriptada.join(' ');
-    
     return resultado;
 }
 
 
 //Funcion para desencriptar la frase ingresada en el input
 function desencriptarTexto() {  
-    let texto = document.getElementById('textAreaEncriptada').value;
+   
+    let texto = document.getElementById('mensaje').innerText;
     console.log(texto); 
+   
 
     let frases = texto.split(' ');
     let fraseEncriptada = [];
@@ -90,8 +102,11 @@ function desencriptarTexto() {
     mensaje.style.display = 'flex';
     document.getElementById('mensaje').innerText = resultado;
     document.getElementById('textAreaEncriptada').value = "";
+    document.getElementById('textAreaEncriptada').removeAttribute("disabled");
     document.getElementById('textAreaEncriptada').focus();
-    
+    document.getElementById('botonEncriptar').removeAttribute("disabled");
+    document.getElementById('botonDesencriptar').setAttribute('disabled', 'true');
+    document.getElementById('mensaje').style.backgroundColor = "green";    
 }
 
 
