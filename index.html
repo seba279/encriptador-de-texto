@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Encriptador de texto</title>
-    <link rel="stylesheet" href="./styles/style.css">
+    <link rel="stylesheet" href="./style.css">
 </head>
 <body>
     <main class="contenido">
@@ -12,16 +12,20 @@
             <h1>Encriptador de Texto</h1>
             <div class="contenido__encriptador__elementos">
                 <textarea class="contenido__encriptador__elementos__texto" id="textAreaEncriptada"></textarea>
-                <button type="button" class="contenido__encriptador__elementos__boton" id="botonEncriptar">Encriptar</button>
+                <div class="contenido__botones">
+                    <button type="button" class="contenido__encriptador__elementos__boton" id="botonEncriptar">Encriptar</button>
+                    <button type="button" class="contenido__desencriptador__boton" disabled id="botonDesencriptar">Desencriptar</button>
+                </div>
             </div>
+            <!--
             <div class="contenido__desencriptador">
                 <h2 class="contenido__desencriptador__titulo">palabra encriptada</h2>
                 <input type="checkbox" class="contenido__desencriptador__checkbox">
-            </div>
-            <button type="button" class="contenido__desencriptador__boton" id="botonDesencriptar">Desencriptar</button>
+            </div>-->
             <div class="contenido__encriptador__mensaje" id="mensaje"></div>
+            <!--<div id="contenedor"></div>-->
         </section>
     </main>
-    <script src="./js/app.js"></script>
+    <script src="./app.js"></script>
 </body>
 </html>
