@@ -7,7 +7,7 @@ btnEncriptar.addEventListener("click", validarEntrada);
 btnDesencriptar.addEventListener("click", desencriptarTexto);
 
 
-//var arrayFrases =[];
+var arrayFrases =[];
 
 //Funcion para validar letras ingresadas
 function validarEntrada() {
