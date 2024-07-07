@@ -1,66 +1,148 @@
+let texto = document.getElementById('textAreaEncriptada');
 let mensaje = document.getElementById('mensaje');
 let btnEncriptar = document.getElementById('botonEncriptar');
-let textArea = document.getElementById('textAreaEncriptada')
 let btnDesencriptar = document.getElementById('botonDesencriptar');
+let listaFrases = document.getElementById('listaFrases');
 
-btnEncriptar.addEventListener("click", validarEntrada);
-btnDesencriptar.addEventListener("click", desencriptarTexto);
+let frases = [];
 
 
-var arrayFrases =[];
+//EVENTO
+eventListener();
 
-//Funcion para validar letras ingresadas
-function validarEntrada() {
-    let frase = document.getElementById('textAreaEncriptada').value;
-    document.getElementById('mensaje').style.backgroundColor = "red";
+//FUNCIONES
+
+function eventListener() {
+    texto.focus();
+    btnEncriptar.addEventListener("click", agregarFrase);
+    //btnDesencriptar.addEventListener("click", desencriptarTexto);
+}
+
+function agregarFrase() {
+
+    //let frases = [];
+    console.log(frases);
+    let frase = texto.value;
+    
+    if(frase === ""){
+        mostrarError("Ingrese una frase por favor...");
+        return;
+    }
 
     const regex = /^[a-z ]*$/;
 
     if (!regex.test(frase)) {
+        mostrarError("Solo se permiten letras minusculas y sin acentos");
+        return;
+    }
 
-        mensaje.style.display = 'flex';
-        mensaje.textContent = "Solo se permiten letras minusculas y sin acentos";
-        setTimeout(() => {
-            mensaje.style.display = 'none';
-        }, 2000)
-
-        document.getElementById('textAreaEncriptada').value = "";
-        document.getElementById('textAreaEncriptada').focus();
-
-    }else if(frase == ""){
-        mensaje.style.display = 'flex';
-        mensaje.textContent = "Ingrese una frase por favor";
-        setTimeout(() => {
-            mensaje.style.display = 'none';
-        }, 2000)
-
-        document.getElementById('textAreaEncriptada').focus();
+    if(frases.includes(frase)) {
+        mostrarError("No se permiten frases repetidas");
+        return;
     }else {
-
-        const resultado = encriptarTexto();
-        //console.log(resultado);
-       
-        mensaje.style.display = 'flex';
-
-        arrayFrases.push(resultado);
-        //console.log(arrayFrases);
+        const fraseEncriptada = encriptarTexto(frase);
+        frases = [...frases,fraseEncriptada];
+        //console.log(frases);
+        texto.value = "";
+        texto.focus();
+        crearElementos();
+    }
     
-        document.getElementById('mensaje').innerHTML = resultado;
-        document.getElementById('textAreaEncriptada').value = "";
-        document.getElementById('textAreaEncriptada').focus();
-        document.getElementById('botonDesencriptar').removeAttribute('disabled');
-        document.getElementById('botonEncriptar').setAttribute("disabled", "true");
-        document.getElementById('botonEncriptar').setAttribute("display", "none");
-        document.getElementById('textAreaEncriptada').setAttribute("disabled", "true");
+}
+
+function mostrarError(error) {
+    const mensajeError = document.createElement('div');
+    mensajeError.textContent = error;
+    mensajeError.classList.add('contenedor');
+
+    const contenedor = document.querySelector('#contenedor1');
+    contenedor.appendChild(mensajeError);
+    setTimeout(() => { 
+        mensajeError.remove();
+        texto.focus();
+    }, 2000);
+    texto.value = "";
+   
+}
+
+function crearElementos() {
+
+    listaFrases.innerHTML="";
+
+    if(frases.length > 0){
+        frases.forEach((frase) => {
+            const div = document.createElement('div');
+            div.classList.add('listaFrases');
+            div.innerHTML = frase;
+             // Crear un checkbox
+            const checkbox = document.createElement('input');
+            checkbox.type = 'checkbox';
+            checkbox.className = 'styled-checkbox';
+            checkbox.addEventListener('change', () => {
+                if (checkbox.checked) {
+
+                    //Deshabilitar todos los demás checkboxes
+                    const allCheckboxes = document.querySelectorAll('.styled-checkbox');
+                    allCheckboxes.forEach(cb => {
+                        if (cb !== checkbox) {
+                            cb.disabled = true;
+                        }
+                        setTimeout(() => {
+                            cb.checked = false;
+                            cb.disabled = false;
+                        }, 3000);
+                        
+                    });
+
+                    const textoEncriptado = div.innerText;
+                    //console.log(textoEncriptado);
+                    
+                    desencriptarTexto(textoEncriptado);
+                    
+                    setTimeout(() => {
+                        texto.focus();
+                    }, 3000);
+                    
+                   
+                    //const resultado = desencriptarTexto(textoEncriptado);
+                    //console.log(resultado);
+
+                    //btnDesencriptar.style.display = 'block';
+                    //btnEncriptar.style.backgroundColor = "red";
+                    //btnEncriptar.style.border ="none";
+                    //btnEncriptar.setAttribute("disabled", "true");
+                    //btnEncriptar.style.color = "white";
+                    //texto.disabled = "true";
+                    //texto.focus();
+                    
+                } else {
+                    // Habilitar todos los checkboxes si se desmarca
+                    const allCheckboxes = document.querySelectorAll('.styled-checkbox');
+                    
+                    allCheckboxes.forEach(cb => {
+                            cb.disabled = false;
+                    });
+                    btnDesencriptar.style.display = 'none';
+                    texto.removeAttribute('disabled');
+                    
+                    //btnEncriptar.style.backgroundColor = "black";
+                    //btnEncriptar.removeAttribute("disabled");
+                    //const textoEncriptado = div.innerText;
+                    //console.log(textoEncriptado);
+
+                }
+            });
+            div.appendChild(checkbox);
+
+            listaFrases.appendChild(div);
+        })
     }
 }
 
-
 //Funcion para encriptar la frase ingresada
 function encriptarTexto() {
-    let texto = document.getElementById('textAreaEncriptada').value;
 
-    let frases = texto.split(' ');
+    let frases = texto.value.split(' ');
     let fraseEncriptada = [];
 
     frases.forEach(frase => {
@@ -73,40 +155,24 @@ function encriptarTexto() {
         fraseEncriptada.push(frase);   
     });
     
-    const resultado = fraseEncriptada.join(' ');
+    let resultado = fraseEncriptada.join(' ');
     return resultado;
 }
 
-
 //Funcion para desencriptar la frase ingresada en el input
-function desencriptarTexto() {  
-   
-    let texto = document.getElementById('mensaje').innerText;
-    console.log(texto); 
-   
+function desencriptarTexto(textoEncriptado) {  
 
-    let frases = texto.split(' ');
-    let fraseEncriptada = [];
-
-    frases.forEach(frase => {
-        frase = frase.replaceAll('enter','e');
-        frase = frase.replaceAll('imes','i');
-        frase = frase.replaceAll('ai','a');
-        frase = frase.replaceAll('ober','o');
-        frase = frase.replaceAll('ufat','u');      
-        
-        fraseEncriptada.push(frase); 
-    });
-
-    const resultado = fraseEncriptada.join(' ');
+    const textoDesencriptado = textoEncriptado.replaceAll('enter','e')
+                                        .replaceAll('imes','i')
+                                        .replaceAll('ai','a')
+                                        .replaceAll('ober','o')
+                                        .replaceAll('ufat','u');  
     mensaje.style.display = 'flex';
-    document.getElementById('mensaje').innerText = resultado;
-    document.getElementById('textAreaEncriptada').value = "";
-    document.getElementById('textAreaEncriptada').removeAttribute("disabled");
-    document.getElementById('textAreaEncriptada').focus();
-    document.getElementById('botonEncriptar').removeAttribute("disabled");
-    document.getElementById('botonDesencriptar').setAttribute('disabled', 'true');
-    document.getElementById('mensaje').style.backgroundColor = "green";    
+    document.getElementById('mensaje').innerText = textoDesencriptado;
+    setTimeout(() => {
+        mensaje.style.display = 'none';
+    }, 3000);
+    return;    
 }
 
 
