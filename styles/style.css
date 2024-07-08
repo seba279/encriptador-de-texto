@@ -191,6 +191,10 @@ img {
     font-size: 1.125rem;
 }
 
+#listaFrases {
+    margin-bottom: 4rem;
+}
+
 .listaFrases {
     display: flex;
     justify-content: space-between;
@@ -206,7 +210,6 @@ img {
     line-height: 1.6rem;
     word-wrap: break-word;
     padding: 1.25rem;
-    margin-top:  var(--rem-primario);
     box-shadow: 0.3125rem 0.3125rem 0.3125rem var(--color-secundario);
 }
 
