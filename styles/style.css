@@ -251,7 +251,7 @@ img {
 
     footer {
         flex-direction: column;
-        gap: 0.4rem;
+        padding: 0.8rem;
     }
 
     p {
