@@ -74,10 +74,11 @@ img {
 
 .contenido {
     width: 100%;
-    height: 86vh;
+    height: auto;
     display: flex;
     justify-content: center;
     align-items: center;
+    box-sizing: border-box;
 }
 
 .header__menu {
