@@ -121,7 +121,7 @@ img {
     background-color: var(--color-primario);
     font-size: 1.2rem;
     margin-bottom: 0.6rem;
-    height: 5rem;
+    height: auto;
     line-height: 1.6rem;
     word-wrap: break-word;
     text-align: justify;
