@@ -28,12 +28,8 @@
 
 body {
     margin: auto;
-    box-sizing: border-box;
-    /*overflow-x: hidden;*/
     display: grid;
-    min-height: 100vh;
     grid-template-rows: auto 1fr auto;
-    
 }
 
 header {
@@ -78,7 +74,7 @@ img {
 
 .contenido {
     width: 100%;
-    height: 86vh;
+    min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -147,7 +143,6 @@ img {
 
 .contenido__encriptador__elementos__boton, .contenido__desencriptador__boton {
     background-color: var(--color-septimo);
-    /*background-color: rgba(255, 0, 0, 0.818);*/
     font-size: 0.9rem;
     color: var(--color-terciario);
     width: 12.5rem;
@@ -166,11 +161,6 @@ img {
     border: none;
 }
 
-/*
-.contenido__desencriptador__checkbox {
-    accent-color: rgba(255, 0, 0, 0.818);
-}*/
-
 .contenido__botones {
     display: flex;
     justify-content: start;
@@ -182,7 +172,6 @@ img {
     display: flex;
     justify-content: center;
     align-items: center;
-    /*background-color: rgba(47, 255, 0, 0.496);*/
     background-color: var(--color-primario);
     text-align: center;
     margin-top: var(--rem-primario);
@@ -200,11 +189,7 @@ img {
     margin-top:  var(--rem-primario);
     padding: var(--rem-primario);
     color: var(--color-terciario);
-    /*background-color: rgba(47, 255, 0, 0.496);*/
-    /*background-color: #240910;*/
-    /*background-color: rgba(100, 200, 0, 500);*/
     background-color: var(--color-cuarto);
-    /*background-color: black;*/
     font-size: 1.125rem;
     margin-bottom:  var(--rem-primario);
     height: auto;
@@ -251,12 +236,12 @@ img {
         text-align: center;
         flex-direction: column;
         font-size: 1.5rem;
+        margin-top: 3rem;
     }
 
     strong {
         font-size: 1.25rem;
     }
-    
    .contenido__encriptador {
         width: 80%;
    }
@@ -270,9 +255,22 @@ img {
         width: 100%;
    }
 
+   #listaFrases {
+        margin-bottom: 4rem;
+   }
+
 }
 
 @media (min-width: 769px) and (max-width: 1200px) {
+
+    h1 {
+        font-size: 2rem;
+        margin-top: 3rem;
+    }
+    strong {
+        font-size: 1.5rem;
+    }
+   
     .contenido__encriptador {
         width: 70%;
         margin: 1.25rem;
