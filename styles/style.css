@@ -87,6 +87,7 @@ img {
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-top: 3rem;
 }
 
 .header__menu {
@@ -120,7 +121,7 @@ img {
     background-color: var(--color-primario);
     font-size: 1.2rem;
     margin-bottom: 0.6rem;
-    height: auto;
+    height: 5rem;
     line-height: 1.6rem;
     word-wrap: break-word;
     text-align: justify;
@@ -261,6 +262,10 @@ img {
         font-size: 0.9rem;
     }
 
+    .contenido {
+        margin-top: 0;
+    }
+
    .contenido__encriptador {
         width: 80%;
    }
@@ -277,6 +282,7 @@ img {
    .contenedor {
         font-size: 1.1rem;
         padding: 0.8rem;
+        height: 1.5rem;
     }
 
    #listaFrases {
