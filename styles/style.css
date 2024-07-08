@@ -1,32 +1,100 @@
+@import url('https://fonts.googleapis.com/css2?family=Inspiration&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Shadows+Into+Light&display=swap');
+
+:root {
+    /* Colores */
+    --color-primario: #ff0000a7;
+    --color-secundario: #a9a9a973;
+    --color-terciario: #ffffff;
+    --color-cuarto: #67be9b;
+    --color-quinto: #d8d4d4;
+    --color-sexto: #a9a9a9b7;
+    --color-septimo: #000000ee;
+    --color-octavo: #f7f7f7;
+    --color-noveno: #cccccc;
+    --color-decimo: #f0f0f0;
+
+    /* Tamaños */
+    --rem-primario: 0.625rem;
+
+    /* Fuentes */
+    --fuente-primaria: "Shadows Into Light";
+    --fuente-secondaria: "Roboto";
+}
+
 * {
     margin: 0;
     padding: 0;
 }
 
 body {
-    margin:auto;
+    margin: auto;
     box-sizing: border-box;
+    overflow-x: hidden;
+}
+
+header {
+    background-color: var(--color-primario);
+    height: 4rem;
 }
 
 h1 {
-    font-size: 26px;
-    padding: 10px;
-    color: rgba(255, 0, 0, 0.655);
+    font-size: 2.3rem;
+    padding: 0.5rem;
+    color: var(--color-primario);
+    font-family: var(--fuente-primaria);
+    font-weight: 400;
+    font-style: normal;
 }
 
 strong {
-    font-size: 24px;
-    color: rgb(216, 212, 212);
-    
+    font-size: 1.7rem;
+    color: rgb(216, 212, 212); 
+    font-family: var(--fuente-secondaria);
+    font-weight: 300;
+    font-style: normal;
+}
+
+footer {
+    background-color: var(--color-septimo);
+    color: var(--color-sexto);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1.5rem;
+    font-family: var(--fuente-secondaria);
+    font-weight: 300;
+    font-style: normal;
+
+}
+
+img {
+    width: 5rem;
+    height: 2.5rem;
 }
 
 .contenido {
     width: 100%;
-    height: 100vh;
+    height: 86vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-wrap: wrap;
+}
+
+.header__menu {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    padding-left: 1rem;
+}
+
+.header__menu__link {
+    padding: 0.5rem;
+    text-decoration: none;
+    color: var(--color-octavo);
+    font-size: 1.2rem;
+    font-family: var(--fuente-secondaria);
+    font-weight: 400;
+    font-style: normal;
 }
 
 .contenido__encriptador {
@@ -37,18 +105,18 @@ strong {
     display: none;
     justify-content: center;
     align-items: center;
-    border-radius: 8px;
-    margin-top: 10px;
-    padding: 10px;
-    color: white;
-    background-color: rgba(255, 0, 0, 0.655);
-    font-size: 18px;
-    margin-bottom: 10px;
+    border-radius: 0.5rem;
+    margin-top: 0.6rem;
+    padding: 0.7rem;
+    color: var(--color-terciario);
+    background-color: var(--color-primario);
+    font-size: 1.2rem;
+    margin-bottom: 0.6rem;
     height: auto;
-    line-height: 25px;
+    line-height: 1.6rem;
     word-wrap: break-word;
     text-align: justify;
-    padding: 15px;
+    padding: 0.9rem;
 }
 
 .contenido__encriptador__elementos {
@@ -60,44 +128,49 @@ strong {
 }
 
 .contenido__encriptador__elementos__texto {
-    height: 100px;
-    border: 2px solid rgb(216, 212, 212);
-    border-radius: 10px;
+    height: 6.25rem;
+    border: 0.125rem solid var(--color-quinto);
+    border-radius: var(--rem-primario);
     outline: none;
-    padding: 10px;
+    padding: 0.6rem;
+    color: var(--color-secundario);
 }
 
 .contenido__botones {
   position: relative;
   left: 79%;
-  
 }
 
 .contenido__encriptador__elementos__boton, .contenido__desencriptador__boton {
-    background-color: rgba(0, 0, 0, 0.935);
+    background-color: var(--color-septimo);
     /*background-color: rgba(255, 0, 0, 0.818);*/
-    font-size: 17px;
-    color: white;
-    width: 200px;
-    height: 50px;
+    font-size: 0.9rem;
+    color: var(--color-terciario);
+    width: 12.5rem;
+    height: 3.125rem;
     text-align: center;
-    margin-top: 10px;
-    border-radius: 10px;
+    margin-top: var(--rem-primario);
+    border-radius: var(--rem-primario);
     border: none;
-    box-shadow: 0px 5px 5px 0px rgba(169, 169, 169, 0.450);
+    box-shadow: 0 0.3125rem 0.3125rem 0 var(--color-secundario);
     
 }
 
 .contenido__encriptador__elementos__boton:hover, .contenido__desencriptador__boton:hover {
-    background-color: white;
-    color: rgba(169, 169, 169, 0.718);
+    background-color: var(--color-terciario);
+    color: var(--color-sexto);
     border: none;
 }
+
+/*
+.contenido__desencriptador__checkbox {
+    accent-color: rgba(255, 0, 0, 0.818);
+}*/
 
 .contenido__botones {
     display: flex;
     justify-content: start;
-    gap: 10px;
+    gap: var(--rem-primario);
 }
 
 /*agregado*/
@@ -105,60 +178,65 @@ strong {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: rgba(255, 0, 0, 0.655);
+    /*background-color: rgba(47, 255, 0, 0.496);*/
+    background-color: var(--color-primario);
     text-align: center;
-    margin-top: 10px;
-    border-radius: 10px;
-    height: 60px;
-    color: #f7f7f7;
-    font-size: 18px;
+    margin-top: var(--rem-primario);
+    border-radius: var(--rem-primario);
+    height: 3.75rem;
+    color: var(--color-octavo);
+    font-size: 1.125rem;
 }
 
 .listaFrases {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-radius: 8px;
-    margin-top: 10px;
-    padding: 10px;
-    color: white;
-    background-color: #67be9b;
-    font-size: 18px;
-    margin-bottom: 10px;
+    border-radius: 0.5rem;
+    margin-top:  var(--rem-primario);
+    padding: var(--rem-primario);
+    color: var(--color-terciario);
+    /*background-color: rgba(47, 255, 0, 0.496);*/
+    /*background-color: #240910;*/
+    /*background-color: rgba(100, 200, 0, 500);*/
+    background-color: var(--color-cuarto);
+    /*background-color: black;*/
+    font-size: 1.125rem;
+    margin-bottom:  var(--rem-primario);
     height: auto;
-    line-height: 25px;
+    line-height: 1.6rem;
     word-wrap: break-word;
-    padding: 20px;
-    margin-top: 10px;
-    box-shadow: 5px 5px 5px rgba(169, 169, 169, 0.450);
+    padding: 1.25rem;
+    margin-top:  var(--rem-primario);
+    box-shadow: 0.3125rem 0.3125rem 0.3125rem var(--color-secundario);
 }
 
 .styled-checkbox {
     appearance: none;
-    background-color: #f0f0f0;
-    border: 2px solid #ccc;
-    border-radius: 5px;
-    width: 15px;
-    height: 15px;
+    background-color: var(--color-decimo);
+    border: 0.125rem solid var(--color-noveno);
+    border-radius: 0.3125rem;
+    width: 0.94rem;
+    height: 0.94rem;
     cursor: pointer;
     position: relative;
-    padding: 5px;
+    padding: 0.3125rem;
 }
 
 .styled-checkbox:checked {
-    background-color: white;
-    border-color: white;
+    background-color: var(--color-terciario);
+    border-color: var(--color-terciario);
 }
 
 .styled-checkbox:checked::after {
     content: '';
     position: absolute;
-    top: -3px;
-    left: 3px;
-    width: 3px;
-    height: 12px;
-    border: 1px solid #67be9b;
-    border-width: 0 2px 2px 0;
+    top: -0.19rem;
+    left: 0.19rem;
+    width: 0.19rem;
+    height: 0.75rem;
+    border: 0.0625rem solid var(--color-cuarto);
+    border-width: 0 0.125rem 0.125rem 0;
     transform: rotate(45deg);
 }
 
@@ -171,7 +249,7 @@ strong {
     }
 
     strong {
-        font-size: 20px;
+        font-size: 1.25rem;
     }
    .contenido__encriptador {
         width: 80%;
@@ -191,7 +269,7 @@ strong {
 @media (min-width: 769px) and (max-width: 1200px) {
     .contenido__encriptador {
         width: 70%;
-        margin: 20px;
+        margin: 1.25rem;
    }
 
    .contenido__botones {
@@ -203,7 +281,7 @@ strong {
 @media (min-width: 1201px) and (max-width: 1600px) {
     .contenido__encriptador {
         width: 70%;
-        margin: 20px;
+        margin: 1.25rem;
    }
 
    .contenido__botones {
@@ -215,11 +293,11 @@ strong {
 @media (min-width: 1601px) and (max-width: 1800px) {
     .contenido__encriptador {
         width: 70%;
-        margin: 20px;
+        margin: 1.25rem;
    }
 
    .contenido__botones {
         display: flex;
-        left: 938px;
+        left: 58.625rem;
    }
 }
