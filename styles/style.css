@@ -252,10 +252,6 @@ img {
     strong {
         font-size: 1.25rem;
     }
-
-    .contenido {
-        height: auto;
-    }
     
    .contenido__encriptador {
         width: 80%;
