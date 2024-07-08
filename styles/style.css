@@ -255,6 +255,11 @@ img {
         width: 100%;
    }
 
+   .contenedor {
+        font-size: 1.1rem;
+        padding: 0.8rem;
+    }
+
    #listaFrases {
         margin-bottom: 4rem;
    }
