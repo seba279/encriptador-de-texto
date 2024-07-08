@@ -27,9 +27,10 @@
 }
 
 body {
-    margin: auto;
     display: grid;
+    min-height: 100vh;
     grid-template-rows: auto 1fr auto;
+    overflow: none;
 }
 
 header {
@@ -48,7 +49,7 @@ h1 {
 
 strong {
     font-size: 1.7rem;
-    color: rgb(216, 212, 212); 
+    color: #D8D4D4; 
     font-family: var(--fuente-secondaria);
     font-weight: 300;
     font-style: normal;
@@ -64,7 +65,16 @@ footer {
     font-family: var(--fuente-secondaria);
     font-weight: 300;
     font-style: normal;
+    gap: 0.5rem;
+}
 
+span {
+    color: var(--color-primario);
+    font-size: 1.2rem;
+}
+
+p {
+    font-size: 1rem;
 }
 
 img {
@@ -73,8 +83,7 @@ img {
 }
 
 .contenido {
-    width: 100%;
-    min-height: 100vh;
+    width: 100%;    
     display: flex;
     justify-content: center;
     align-items: center;
@@ -82,9 +91,8 @@ img {
 
 .header__menu {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-around;
     align-items: center;
-    padding-left: 1rem;
 }
 
 .header__menu__link {
@@ -143,6 +151,7 @@ img {
 
 .contenido__encriptador__elementos__boton, .contenido__desencriptador__boton {
     background-color: var(--color-septimo);
+    /*background-color: rgba(255, 0, 0, 0.818);*/
     font-size: 0.9rem;
     color: var(--color-terciario);
     width: 12.5rem;
@@ -167,11 +176,11 @@ img {
     gap: var(--rem-primario);
 }
 
-/*agregado*/
 .contenedor {
     display: flex;
     justify-content: center;
     align-items: center;
+    /*background-color: rgba(47, 255, 0, 0.496);*/
     background-color: var(--color-primario);
     text-align: center;
     margin-top: var(--rem-primario);
@@ -236,12 +245,22 @@ img {
         text-align: center;
         flex-direction: column;
         font-size: 1.5rem;
-        margin-top: 3rem;
+        margin-top: 2rem;
     }
 
     strong {
         font-size: 1.25rem;
     }
+
+    footer {
+        flex-direction: column;
+        gap: 0.4rem;
+    }
+
+    p {
+        font-size: 0.9rem;
+    }
+
    .contenido__encriptador {
         width: 80%;
    }
@@ -261,7 +280,7 @@ img {
     }
 
    #listaFrases {
-        margin-bottom: 4rem;
+        margin-bottom: 2rem;
    }
 
 }
@@ -270,7 +289,7 @@ img {
 
     h1 {
         font-size: 2rem;
-        margin-top: 3rem;
+        margin-top: 4rem;
     }
     strong {
         font-size: 1.5rem;
