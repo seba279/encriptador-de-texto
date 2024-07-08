@@ -30,7 +30,6 @@ body {
     display: grid;
     min-height: 100vh;
     grid-template-rows: auto 1fr auto;
-    overflow: none;
 }
 
 header {
@@ -65,7 +64,6 @@ footer {
     font-family: var(--fuente-secondaria);
     font-weight: 300;
     font-style: normal;
-    gap: 0.5rem;
 }
 
 span {
@@ -277,6 +275,10 @@ img {
         font-size: 1.1rem;
         padding: 0.8rem;
         height: 1.5rem;
+   }
+
+   #listaFrases {
+        margin-bottom: 2rem;
    }
 
 }
