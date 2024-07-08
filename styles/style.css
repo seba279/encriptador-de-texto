@@ -260,10 +260,6 @@ img {
         font-size: 0.9rem;
     }
 
-    .contenido {
-        margin-top: 0;
-    }
-
    .contenido__encriptador {
         width: 80%;
    }
