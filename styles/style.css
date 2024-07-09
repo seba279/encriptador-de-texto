@@ -31,7 +31,7 @@ body {
     display: grid;
     min-height: 100vh;
     grid-template-rows: auto 1fr auto;
-    overflow: none;
+    /*overflow: none;*/
 }
 
 header {
@@ -84,8 +84,6 @@ img {
 }
 
 .contenido {
-    width: 100%;
-    min-height: 72vh; 
     display: flex;
     justify-content: center;
     align-items: center;
