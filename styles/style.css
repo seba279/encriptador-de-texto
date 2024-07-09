@@ -30,6 +30,7 @@ body {
     display: grid;
     min-height: 100vh;
     grid-template-rows: auto 1fr auto;
+    overflow: none;
 }
 
 header {
@@ -60,10 +61,11 @@ footer {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 1.5rem;
+    padding: 1rem;
     font-family: var(--fuente-secondaria);
     font-weight: 300;
     font-style: normal;
+    gap: 0.2rem;
 }
 
 span {
@@ -149,7 +151,6 @@ img {
 
 .contenido__encriptador__elementos__boton, .contenido__desencriptador__boton {
     background-color: var(--color-septimo);
-    /*background-color: rgba(255, 0, 0, 0.818);*/
     font-size: 0.9rem;
     color: var(--color-terciario);
     width: 12.5rem;
@@ -178,7 +179,6 @@ img {
     display: flex;
     justify-content: center;
     align-items: center;
-    /*background-color: rgba(47, 255, 0, 0.496);*/
     background-color: var(--color-primario);
     text-align: center;
     margin-top: var(--rem-primario);
@@ -242,7 +242,6 @@ img {
         text-align: center;
         flex-direction: column;
         font-size: 1.5rem;
-        margin-top: 2rem;
     }
 
     strong {
@@ -251,7 +250,10 @@ img {
 
     footer {
         flex-direction: column;
-        padding: 0.8rem;
+    }
+
+    span {
+        font-size: 1.2rem;
     }
 
     p {
@@ -275,11 +277,7 @@ img {
         font-size: 1.1rem;
         padding: 0.8rem;
         height: 1.5rem;
-   }
-
-   #listaFrases {
-        margin-bottom: 2rem;
-   }
+    }
 
 }
 
