@@ -80,7 +80,7 @@ function crearElementos() {
             checkbox.className = 'styled-checkbox';
             checkbox.addEventListener('change', () => {
                 if (checkbox.checked) {
-        
+
                     //Deshabilitar todos los demás checkboxes
                     const allCheckboxes = document.querySelectorAll('.styled-checkbox');
                     allCheckboxes.forEach(cb => {
@@ -93,9 +93,13 @@ function crearElementos() {
                         }, 3000);
                         
                     });
-        
+
                     const textoEncriptado = div.innerText;
                     //console.log(textoEncriptado);
+                    
+                    //setTimeout(() => {
+                      //  checkbox.checked = false; 
+                    //}, 2000);
                     
                     desencriptarTexto(textoEncriptado);
                     
@@ -106,7 +110,7 @@ function crearElementos() {
                    
                     //const resultado = desencriptarTexto(textoEncriptado);
                     //console.log(resultado);
-        
+
                     //btnDesencriptar.style.display = 'block';
                     //btnEncriptar.style.backgroundColor = "red";
                     //btnEncriptar.style.border ="none";
@@ -129,7 +133,7 @@ function crearElementos() {
                     //btnEncriptar.removeAttribute("disabled");
                     //const textoEncriptado = div.innerText;
                     //console.log(textoEncriptado);
-        
+
                 }
             });
             div.appendChild(checkbox);
