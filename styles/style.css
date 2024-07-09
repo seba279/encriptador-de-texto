@@ -24,13 +24,14 @@
 * {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
 body {
     display: grid;
     min-height: 100vh;
     grid-template-rows: auto 1fr auto;
-    /*overflow: none;*/
+    overflow: none;
 }
 
 header {
@@ -66,7 +67,6 @@ footer {
     font-weight: 300;
     font-style: normal;
     gap: 0.4rem;
-    height: auto;
 }
 
 span {
@@ -84,8 +84,8 @@ img {
 }
 
 .contenido {
-    width: 100%;    
-    height: auto;
+    width: 100%;
+    min-height: 75vh; 
     display: flex;
     justify-content: center;
     align-items: center;
