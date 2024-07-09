@@ -78,70 +78,65 @@ function crearElementos() {
             const checkbox = document.createElement('input');
             checkbox.type = 'checkbox';
             checkbox.className = 'styled-checkbox';
-            verificarCheckbox(checkbox);
+            checkbox.addEventListener('change', () => {
+            if (checkbox.checked) {
+    
+                //Deshabilitar todos los demás checkboxes
+                const allCheckboxes = document.querySelectorAll('.styled-checkbox');
+                allCheckboxes.forEach(cb => {
+                    if (cb !== checkbox) {
+                        cb.disabled = true;
+                    }
+                    setTimeout(() => {
+                        cb.checked = false;
+                        cb.disabled = false;
+                    }, 3000);
+                    
+                });
+    
+                const textoEncriptado = div.innerText;
+                //console.log(textoEncriptado);
+                
+                desencriptarTexto(textoEncriptado);
+                
+                setTimeout(() => {
+                    texto.focus();
+                }, 3000);
+                
+               
+                //const resultado = desencriptarTexto(textoEncriptado);
+                //console.log(resultado);
+    
+                //btnDesencriptar.style.display = 'block';
+                //btnEncriptar.style.backgroundColor = "red";
+                //btnEncriptar.style.border ="none";
+                //btnEncriptar.setAttribute("disabled", "true");
+                //btnEncriptar.style.color = "white";
+                //texto.disabled = "true";
+                //texto.focus();
+                
+            } else {
+                // Habilitar todos los checkboxes si se desmarca
+                const allCheckboxes = document.querySelectorAll('.styled-checkbox');
+                
+                allCheckboxes.forEach(cb => {
+                        cb.disabled = false;
+                });
+                btnDesencriptar.style.display = 'none';
+                texto.removeAttribute('disabled');
+                
+                //btnEncriptar.style.backgroundColor = "black";
+                //btnEncriptar.removeAttribute("disabled");
+                //const textoEncriptado = div.innerText;
+                //console.log(textoEncriptado);
+    
+            }
             
             div.appendChild(checkbox);
 
             listaFrases.appendChild(div);
         })
     }
-}
-
-function verificarCheckbox(checkbox) {
-    checkbox.addEventListener('change', () => {
-        if (checkbox.checked) {
-
-            //Deshabilitar todos los demás checkboxes
-            const allCheckboxes = document.querySelectorAll('.styled-checkbox');
-            allCheckboxes.forEach(cb => {
-                if (cb !== checkbox) {
-                    cb.disabled = true;
-                }
-                setTimeout(() => {
-                    cb.checked = false;
-                    cb.disabled = false;
-                }, 3000);
-                
-            });
-
-            const textoEncriptado = div.innerText;
-            //console.log(textoEncriptado);
-            
-            desencriptarTexto(textoEncriptado);
-            
-            setTimeout(() => {
-                texto.focus();
-            }, 3000);
-            
-           
-            //const resultado = desencriptarTexto(textoEncriptado);
-            //console.log(resultado);
-
-            //btnDesencriptar.style.display = 'block';
-            //btnEncriptar.style.backgroundColor = "red";
-            //btnEncriptar.style.border ="none";
-            //btnEncriptar.setAttribute("disabled", "true");
-            //btnEncriptar.style.color = "white";
-            //texto.disabled = "true";
-            //texto.focus();
-            
-        } else {
-            // Habilitar todos los checkboxes si se desmarca
-            const allCheckboxes = document.querySelectorAll('.styled-checkbox');
-            
-            allCheckboxes.forEach(cb => {
-                    cb.disabled = false;
-            });
-            btnDesencriptar.style.display = 'none';
-            texto.removeAttribute('disabled');
-            
-            //btnEncriptar.style.backgroundColor = "black";
-            //btnEncriptar.removeAttribute("disabled");
-            //const textoEncriptado = div.innerText;
-            //console.log(textoEncriptado);
-
-        }
-    });
 }
 
 //Funcion para encriptar la frase ingresada
