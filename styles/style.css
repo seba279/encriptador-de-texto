@@ -29,9 +29,8 @@
 
 body {
     display: grid;
-    min-height: 100vh;
     grid-template-rows: auto 1fr auto;
-    /*overflow: none;*/
+    overflow: none;
 }
 
 header {
@@ -67,7 +66,10 @@ footer {
     font-weight: 300;
     font-style: normal;
     gap: 0.4rem;
+    height: 4rem;
+    box-sizing: border-box;
 }
+
 
 span {
     color: var(--color-primario);
@@ -83,7 +85,9 @@ img {
     height: 2.5rem;
 }
 
-.contenido {
+.contenido { 
+    width: 100%;
+    min-height: calc(100vh - 8rem);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -250,8 +254,6 @@ img {
 
     footer {
         flex-direction: column;
-        gap: 0.2;
-        padding-bottom: 1.5rem;
     }
 
     span {
@@ -278,7 +280,7 @@ img {
    .contenedor {
         font-size: 1.1rem;
         padding: 0.8rem;
-        height: 1.5rem;
+        height: 2.5rem;
     }
 
 }
