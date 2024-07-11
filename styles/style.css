@@ -67,12 +67,13 @@ footer {
     font-weight: 300;
     font-style: normal;
     gap: 0.4rem;
+    /*height: 4rem;*/
 }
 
 
 span {
-    color: var(--color-primario);
-    font-size: 1.2rem;
+    color: var(--color-octavo);
+    font-size: 1.1rem;
 }
 
 p {
@@ -85,6 +86,7 @@ img {
 }
 
 .contenido { 
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -94,6 +96,7 @@ img {
     display: flex;
     justify-content: space-around;
     align-items: center;
+    padding-top: 0.5rem;
 }
 
 .header__menu__link {
@@ -126,7 +129,10 @@ img {
     word-wrap: break-word;
     text-align: justify;
     padding: 0.9rem;
+    /*agregando*/
+    /*justify-content: space-between;*/
 }
+
 
 .contenido__encriptador__elementos {
     width: 100%;
@@ -146,13 +152,14 @@ img {
 }
 
 .contenido__botones {
-  position: relative;
-  left: 79%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
 
 .contenido__encriptador__elementos__boton, .contenido__desencriptador__boton {
     background-color: var(--color-septimo);
-    font-size: 0.9rem;
+    font-size: 1rem;
     color: var(--color-terciario);
     width: 12.5rem;
     height: 3.125rem;
@@ -161,6 +168,10 @@ img {
     border-radius: var(--rem-primario);
     border: none;
     box-shadow: 0 0.3125rem 0.3125rem 0 var(--color-secundario);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.6rem;
     
 }
 
@@ -184,10 +195,11 @@ img {
     text-align: center;
     margin-top: var(--rem-primario);
     border-radius: var(--rem-primario);
-    height: 3.75rem;
+    height: 4rem;
     color: var(--color-octavo);
     font-size: 1.125rem;
 }
+
 
 .listaFrases {
     display: flex;
@@ -207,34 +219,27 @@ img {
     box-shadow: 0.3125rem 0.3125rem 0.3125rem var(--color-secundario);
 }
 
-.styled-checkbox {
-    appearance: none;
-    background-color: var(--color-decimo);
-    border: 0.125rem solid var(--color-noveno);
-    border-radius: 0.3125rem;
-    width: 0.94rem;
-    height: 0.94rem;
-    cursor: pointer;
-    position: relative;
-    padding: 0.3125rem;
+.listaFrases__icono_copiar {
+    color: var(--color-cuarto);
+    width: 1rem;
+    height: 1rem;
 }
 
-.styled-checkbox:checked {
-    background-color: var(--color-terciario);
-    border-color: var(--color-terciario);
+.listaFrases__icono__encriptar, .listaFrases__icono__desencriptar {
+    color: white;
+    width: 1.3rem;
+    height: 1.3rem;
 }
 
-.styled-checkbox:checked::after {
-    content: '';
-    position: absolute;
-    top: -0.19rem;
-    left: 0.19rem;
-    width: 0.19rem;
-    height: 0.75rem;
-    border: 0.0625rem solid var(--color-cuarto);
-    border-width: 0 0.125rem 0.125rem 0;
-    transform: rotate(45deg);
+.contenido__encriptador__boton_copiar {
+    width: 40px;
+    height: 40px;
+    background-color: white;
+    border: none;
+    color: black;
+    border-radius: 50%;
 }
+
 
 @media (max-width: 768px) {
     h1 {
@@ -254,11 +259,15 @@ img {
     }
 
     span {
-        font-size: 1.1rem;
+        font-size: 1rem;
     }
 
     p {
         font-size: 0.9rem;
+    }
+
+    .header__menu {
+        justify-content: center;
     }
 
    .contenido__encriptador {
@@ -266,20 +275,26 @@ img {
    }
 
    .contenido__botones {
-        position: relative;
-        left: 0px;
+        flex-direction: column;
+        gap: 0.1rem;
    }
 
-   .contenido__encriptador__elementos__boton {
+   .contenido__desencriptador__boton, .contenido__encriptador__elementos__boton {
         width: 100%;
    }
 
    .contenedor {
         font-size: 1.1rem;
         padding: 0.8rem;
-        height: 1.5rem;
     }
 
+    .listaFrases {
+        display: flex;
+        flex-direction: column-reverse;
+        gap: 0.5rem;
+        text-align: center;
+        align-items: center;
+    }
 }
 
 @media (min-width: 769px) and (max-width: 1200px) {
@@ -294,12 +309,12 @@ img {
     .contenido__encriptador {
         width: 70%;
         margin: 1.25rem;
-   }
+    }
 
-   .contenido__botones {
-        display: flex;
-        left: 0px;
-   }
+    .contenido__encriptador__elementos__boton, .contenido__desencriptador__boton {
+        width: 11.5rem;
+    }
+
 }
 
 @media (min-width: 1201px) and (max-width: 1600px) {
@@ -307,21 +322,11 @@ img {
         width: 70%;
         margin: 1.25rem;
    }
-
-   .contenido__botones {
-        display: flex;
-        left: 0px;
-   }
 }
 
 @media (min-width: 1601px) and (max-width: 1800px) {
     .contenido__encriptador {
         width: 70%;
         margin: 1.25rem;
-   }
-
-   .contenido__botones {
-        display: flex;
-        left: 58.625rem;
    }
 }
