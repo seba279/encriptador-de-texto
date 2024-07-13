@@ -3,13 +3,15 @@ let mensaje = document.getElementById('mensaje');
 let btnEncriptar = document.getElementById('botonEncriptar');
 let btnDesencriptar = document.getElementById('botonDesencriptar');
 let listaFrases = document.getElementById('listaFrases');
+let btnLimpiar = document.getElementById('botonLimpiar');
 
 //Creando un Arreglo
 let frases = [];
+let frasesNoEncriptada = [];
 
-//EVENTOS
+/* EVENTOS */
 
-//Carga configuraciones iniciales
+//Carga Econfiguraciones iniciales
 document.addEventListener("DOMContentLoaded", configuracionInicial());
 
 //Permite agregar una frase a un arreglo.
@@ -17,14 +19,17 @@ btnEncriptar.addEventListener("click", agregarFrase);
 
 //Permite desencriptar la frase al hacer click sobre el boton.
 btnDesencriptar.addEventListener('click', desencriptarTexto);
+btnLimpiar.addEventListener('click', limpiar);
 
-//FUNCIONES
+/* FUNCIONES */
 
 function configuracionInicial() {
+    //Posiciona el cursor en el textarea
     texto.focus();
     feather.replace();
 }
 
+//Mensaje de Error
 function mostrarError(error) {
     mensaje.style.display = "flex";
     mensaje.textContent = error;
@@ -35,12 +40,17 @@ function mostrarError(error) {
     texto.value = "";
 }
 
+//Reemplaza las vocales
 function encriptarVocales(texto){
-    return texto.replaceAll('a', 'ai')
-                .replaceAll('e', 'enter')
-                .replaceAll('i', 'imes')
-                .replaceAll('o', 'ober')
-                .replaceAll('u', 'ufat');
+    const frase = {
+        e: 'enter',
+        i: 'imes',
+        a: 'ai',
+        o: 'obu',
+        u: 'ufat'
+    };
+
+    return texto.replace(/e|i|a|o|u/g, vocal => frase[vocal]);
 }
 
 //Funcion para encriptar la frase ingresada
@@ -49,6 +59,7 @@ function encriptarTexto() {
     return encriptarVocales(frase);
 }
 
+//Creando los elementos de una nueva frase
 function crearElementos() {
 
     listaFrases.innerHTML="";
@@ -105,12 +116,13 @@ function mostrarResultado(elemento, frase){
 function agregarFrase() {
 
     let frase = texto.value;
-    
+
     if(frase === ""){
         mostrarError("Ingrese una frase por favor...");
         return;
     }
 
+    //Validacion de letras minusculas y sin carcateres especiales
     const regex = /^[a-z ]*$/;
 
     if (!regex.test(frase)) {
@@ -118,14 +130,18 @@ function agregarFrase() {
         return;
     }
 
-    if(frases.includes(frase)) {
+    if(frasesNoEncriptada.includes(frase)) {
         mostrarError("No se permiten frases repetidas");
+        return;
+    }
+
+    if(frases.includes(frase)) {
+        mostrarError("La frase ingresada ya esta encriptada");
         return;
     }else {
         const fraseEncriptada = encriptarTexto(frase);
-        //console.log(fraseEncriptada);
         frases = [...frases,fraseEncriptada];
-        //console.log(frases);
+        frasesNoEncriptada = [...frasesNoEncriptada, frase];
         texto.value = "";
         texto.focus();
         crearElementos();
@@ -135,22 +151,27 @@ function agregarFrase() {
 }
 
 function desencriptarVocales(texto){
-    return texto.replaceAll('enter','e')
-                .replaceAll('imes','i')
-                .replaceAll('ai','a')
-                .replaceAll('ober','o')
-                .replaceAll('ufat','u'); 
+    const fraseEncriptada = {
+        enter: 'e',
+        imes: 'i',
+        ai: 'a',
+        obu: 'o',
+        ufat: 'u'
+    };
+
+    return texto.replace(/enter|imes|ai|obu|ufat/g, grupoPalabras => fraseEncriptada[grupoPalabras]);
 }
 
 //Verificando si la frase ingresada esta encriptada o no
 function validarEncriptado() {
     let texto = document.getElementById('textAreaEncriptada').value;
     //console.log(texto);
-    let patronEncriptado = /ai|emi|iai|omi|umi/;
+    let patronEncriptado = /enter|emi|ai|obu|ufat/;
+    //Verificamos si la frase esta encriptada
     let estaEncriptado = patronEncriptado.test(texto);
     //console.log(estaEncriptado);
     if(!estaEncriptado){
-        mostrarError("El texto no esta encriptado");
+        mostrarError("La Frase ingresada no esta encriptada");
     }else {
         const textoDesencriptado = desencriptarVocales(texto); 
         mensaje.style.display = 'flex';
@@ -175,6 +196,15 @@ function desencriptarTexto() {
         }, 3000);
     }
     return;    
+}
+
+function limpiar() {
+    texto.value = "";
+    texto.focus();
+    frases = [];
+    frasesNoEncriptada = []
+    listaFrases.innerHTML = "";
+    
 }
 
 
