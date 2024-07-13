@@ -5,24 +5,24 @@ let btnDesencriptar = document.getElementById('botonDesencriptar');
 let listaFrases = document.getElementById('listaFrases');
 let btnLimpiar = document.getElementById('botonLimpiar');
 
-//Creando un Arreglo
+//Creando Arreglos
 let frases = [];
 let frasesNoEncriptada = [];
 
 /* EVENTOS */
-
-//Carga Econfiguraciones iniciales
+//Carga configuraciones iniciales
 document.addEventListener("DOMContentLoaded", configuracionInicial());
 
-//Permite agregar una frase a un arreglo.
+//Agrega un frase
 btnEncriptar.addEventListener("click", agregarFrase);
 
-//Permite desencriptar la frase al hacer click sobre el boton.
+//Desencripta una frase
 btnDesencriptar.addEventListener('click', desencriptarTexto);
+
+//Limpia el textarea y el arreglo
 btnLimpiar.addEventListener('click', limpiar);
 
 /* FUNCIONES */
-
 function configuracionInicial() {
     //Posiciona el cursor en el textarea
     texto.focus();
@@ -140,13 +140,16 @@ function agregarFrase() {
         return;
     }else {
         const fraseEncriptada = encriptarTexto(frase);
+        //console.log(fraseEncriptada);
         frases = [...frases,fraseEncriptada];
         frasesNoEncriptada = [...frasesNoEncriptada, frase];
+        //console.log(frases);
         texto.value = "";
         texto.focus();
         crearElementos();
-        console.log(frases);
-        mostrarResultado('listaFrases', fraseEncriptada)
+        //console.log(frases);
+        mostrarResultado('listaFrases', fraseEncriptada);
+        btnLimpiar.style.display = "flex";
     }
 }
 
@@ -182,7 +185,7 @@ function validarEncriptado() {
     }
 }
 
-//Funcion para desencriptar la frase ingresada en el input
+//Funcion para desencriptar la frase ingresada 
 function desencriptarTexto() {  
     const fraseEncriptada = texto.value;
 
@@ -198,13 +201,16 @@ function desencriptarTexto() {
     return;    
 }
 
+//Funcion que limpia el textarea y el arreglo
 function limpiar() {
     texto.value = "";
     texto.focus();
+    //const lista = listaFrases.children.length;
+    //console.log(lista);
     frases = [];
     frasesNoEncriptada = []
     listaFrases.innerHTML = "";
-    
+    btnLimpiar.style.display = "none";
 }
 
 
