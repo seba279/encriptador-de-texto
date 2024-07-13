@@ -180,6 +180,10 @@ img {
     border: none;
 }
 
+.contenido__limpiar__boton {
+    display: none;
+}
+
 .contenido__botones {
     display: flex;
     justify-content: start;
