@@ -46,12 +46,12 @@ Extras:
  <p>https://seba279.github.io/encriptador-de-texto/</p>
 
  <h3>Tecnologías utilizadas</h3>
- <p>HTML</p>
- <p>CSS</p>
- <p>Javascript</p>
- <p>Git y Github</p>
- <p>Chat GPT</p>
- <p>Luri</p>
+ - <p>HTML</p>
+ - <p>CSS</p>
+ - <p>Javascript</p>
+ - <p>Git y Github</p>
+ - <p>Chat GPT</p>
+ - <p>Luri</p>
  
  <h3>Autor</h3>
  <span>Sebastian Dorado</span>
