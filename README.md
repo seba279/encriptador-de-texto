@@ -34,3 +34,26 @@ Extras:
 
 - El Trello es una herramienta de uso individual para que puedas controlar el progreso de tus actividades.
 
+<h3>Estado del Proyecto</h3>
+ <p align="center">
+   <img src="https://img.shields.io/badge/STATUS-EN%20DESAROLLO-green">
+ </p>
+
+ <h3>Características de la aplicación</h3>
+
+ <h3>Acceso al proyecto</h3>
+ <span>https://github.com/seba279/encriptador-de-texto</span>
+ <span>https://seba279.github.io/encriptador-de-texto/</span>
+
+ <h3>Tecnologías utilizadas</h3>
+ - HTML
+ - CSS
+ - Javascript
+ - Git y Github
+ - Chat GPT
+ - Luri
+ 
+ <h3>Autor</h3>
+ <span>Sebastian Dorado</span>
+ 
+
