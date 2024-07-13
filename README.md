@@ -1,8 +1,6 @@
-#Titulo del Proyecto
+#CHALLENGER ONE ALURA LATAM: Encriptador de Texto</h1>
 
-<h1>CHALLENGER ONE ALURA LATAM Encriptador de Texto</h1>
-
-#Descripcion del Proyecto
+#Descripcion del Proyecto:
 
 Vamos a trabajar en una aplicación que encripta textos, así podrás intercambiar mensajes secretos con otras personas que sepan el secreto de la encriptación utilizada.
 
