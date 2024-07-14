@@ -40,11 +40,18 @@ Extras:
  </p>
 
  <h3>Características de la aplicación</h3>
- <p>Pantalla Principal</p>
+ <h4 align="center">Principal</h4>
+ <div align="center"><img src="./img/captura1.png" style = "width: 50%";></div>
  
-
+ <h4 align="center">Validando el textarea</h4>
+ <div align="center"><img src="./img/captura2.png" style = "width: 50%";></div>
+<div align="center"><img src="./img/captura3.png" style = "width: 50%";></div>
+ 
  <h3>Acceso al proyecto</h3>
+ <h4>Enlace al Repositorio</h4>
  <p>https://github.com/seba279/encriptador-de-texto</p>
+ 
+ <h4>Enlace para probar el proyecto</h4>
  <p>https://seba279.github.io/encriptador-de-texto/</p>
 
  <h3>Tecnologías utilizadas</h3>
