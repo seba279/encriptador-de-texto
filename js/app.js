@@ -27,6 +27,7 @@ function configuracionInicial() {
     //Posiciona el cursor en el textarea
     texto.focus();
     feather.replace();
+    //texto.removeAttribute("disabled");
 }
 
 //Mensaje de Error
@@ -82,9 +83,13 @@ function crearElementos() {
             //Evento click del boton que nos permite copiar el texto
             boton.addEventListener("click", () => {
                 const fraseEncriptada = frase;
-                //console.log(fraseEncriptada);
                 navigator.clipboard.writeText(fraseEncriptada);
                 texto.value="";
+                mostrarError("La frase se pudo copiar correctamente");
+                //mensaje.style.backgroundColor = "#33211c";
+                //texto.value = fraseEncriptada;
+                //texto.setAttribute("disabled", "true");
+                texto.focus();
             });
 
             //Creando el icono
@@ -116,6 +121,7 @@ function mostrarResultado(elemento, frase){
 function agregarFrase() {
 
     let frase = texto.value;
+    //texto.removeAttribute("disabled");
 
     if(frase === ""){
         mostrarError("Ingrese una frase por favor...");
@@ -140,14 +146,11 @@ function agregarFrase() {
         return;
     }else {
         const fraseEncriptada = encriptarTexto(frase);
-        //console.log(fraseEncriptada);
         frases = [...frases,fraseEncriptada];
         frasesNoEncriptada = [...frasesNoEncriptada, frase];
-        //console.log(frases);
         texto.value = "";
         texto.focus();
         crearElementos();
-        //console.log(frases);
         mostrarResultado('listaFrases', fraseEncriptada);
         btnLimpiar.style.display = "flex";
     }
@@ -161,18 +164,15 @@ function desencriptarVocales(texto){
         obu: 'o',
         ufat: 'u'
     };
-
     return texto.replace(/enter|imes|ai|obu|ufat/g, grupoPalabras => fraseEncriptada[grupoPalabras]);
 }
 
 //Verificando si la frase ingresada esta encriptada o no
 function validarEncriptado() {
     let texto = document.getElementById('textAreaEncriptada').value;
-    //console.log(texto);
     let patronEncriptado = /enter|emi|ai|obu|ufat/;
     //Verificamos si la frase esta encriptada
     let estaEncriptado = patronEncriptado.test(texto);
-    //console.log(estaEncriptado);
     if(!estaEncriptado){
         mostrarError("La Frase ingresada no esta encriptada");
     }else {
@@ -188,13 +188,13 @@ function validarEncriptado() {
 //Funcion para desencriptar la frase ingresada 
 function desencriptarTexto() {  
     const fraseEncriptada = texto.value;
-
     if(fraseEncriptada === ""){
         mostrarError("Ingrese un frase por favor");
     }else {
         validarEncriptado();
         texto.value= "";
         setTimeout(() => {
+            //texto.removeAttribute("disabled");
             texto.focus(); 
         }, 3000);
     }
@@ -205,12 +205,10 @@ function desencriptarTexto() {
 function limpiar() {
     texto.value = "";
     texto.focus();
-    //const lista = listaFrases.children.length;
-    //console.log(lista);
     frases = [];
     frasesNoEncriptada = []
     listaFrases.innerHTML = "";
-    btnLimpiar.style.display = "none";
+    btnLimpiar.style.display = "none"; 
 }
 
 
