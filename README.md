@@ -35,21 +35,35 @@ Extras:
 - El Trello es una herramienta de uso individual para que puedas controlar el progreso de tus actividades.
 
 <h3>Estado del Proyecto</h3>
- <p align="center">
-   <img src="https://img.shields.io/badge/STATUS-EN%20DESAROLLO-green">
- </p>
+<p align="left">
+      <img src="https://img.shields.io/badge/STATUS-EN%20DESAROLLO-green">
+</p>
 
  <h3>Características de la aplicación</h3>
- <h4 align="center">Principal</h4>
- <div align="center"><img src="./img/captura1.png" style = "width: 50%";></div>
  
- <h4 align="center">Validando el textarea</h4>
- <div align="center"><img src="./img/captura2.png" style = "width: 50%";></div>
-<div align="center"><img src="./img/captura3.png" style = "width: 50%";></div>
+ <div align="center">
+       <h4>Principal</h4>
+       <img src="./img/captura1.png" style = "width: 50%";>
+       <h4>Validando si el campo esta vacio</h4>
+       <img src="./img/captura2.png" style = "width: 50%";>
+       <h4>Validando caracteres ingresados</h4>
+       <img src="./img/captura3.png" style = "width: 50%";>
+       <img src="./img/captura4.png" style = "width: 50%";>
+       <h4>Validando para que no se repita la frase</h4>
+       <img src="./img/captura6.png" style = "width: 50%";>
+       <h4>Mensaje de ingresar una frase y presionar el boton de Desencriptar</h4>
+       <img src="./img/captura7.png" style = "width: 50%";>
+       <h4>Mensaje al copiar la Frase Encriptada</h4>
+       <img src="./img/captura8.png" style = "width: 50%";>
+       <h4>Muestra un mensaje de frase encriptada si presionamos el boton de Encriptar</h4>
+       <img src="./img/captura9.png" style = "width: 50%";>
+       <h4>Muestra la frase desencriptada al presionar el boton de desencriptar</h4>
+       <img src="./img/captura10.png" style = "width: 50%";>
+       <h5>Se agrega una nueva frase</h5>
+       <img src="./img/captura5.png" style = "width: 50%";> 
+ </div>
  
  <h3>Acceso al proyecto</h3>
- <h4>Enlace al Repositorio</h4>
- <p>https://github.com/seba279/encriptador-de-texto</p>
  
  <h4>Enlace para probar el proyecto</h4>
  <p>https://seba279.github.io/encriptador-de-texto/</p>
@@ -63,6 +77,6 @@ Extras:
  <p>- Luri</p>
  
  <h3>Autor</h3>
- <span>Sebastian Dorado</span>
+ <span>Jose Sebastian Dorado</span>
  
 
