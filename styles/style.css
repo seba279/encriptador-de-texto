@@ -136,7 +136,6 @@ img {
     padding: 0.9rem;
 }
 
-
 .contenido__encriptador__elementos {
     width: 100%;
     display: flex;
@@ -152,6 +151,11 @@ img {
     outline: none;
     padding: 0.6rem;
     color: var(--color-secundario);
+}
+
+.contenido__encriptador__elementos__texto::placeholder {
+    color: var(--color-noveno);
+    font-size: 0.9rem;
 }
 
 .contenido__encriptador__elementos__boton, .contenido__desencriptador__boton, .contenido__limpiar__boton {
@@ -203,7 +207,6 @@ img {
     font-size: 1.125rem;
 }
 
-
 .listaFrases {
     display: flex;
     justify-content: space-between;
@@ -250,17 +253,34 @@ img {
     border-radius: 50%;
 }
 
+.footer__redes {
+    display: flex;
+    gap: 0.4rem;
+}
+
+.footer__redes_general {
+    color: var(--color-sexto);
+    width: 1.5rem;
+    height: 1.5rem;
+    margin-left: 0.5rem;
+}
+
+.footer__redes_general:hover {
+    color: var(--color-octavo);
+}
+
 @media (max-width: 468px) {
    
     .header__menu span {
         font-size: 0.9rem;
        
     }
+    
     .contenido__encriptador__mensaje {
         text-align: center;
         font-size: 1rem;
     }
-    /*ver*/
+    
     .contenido {    
         margin-top: 1rem;
         margin-bottom: 1rem;
@@ -276,6 +296,7 @@ img {
 }
 
 @media (max-width: 768px) {
+    
     h1 {
         display: flex;
         justify-content: center;
@@ -291,6 +312,7 @@ img {
 
     footer {
         flex-direction: column;
+        gap: 1rem;
     }
 
     span {
@@ -338,6 +360,11 @@ img {
     .contenido__desencriptador__boton, .contenido__encriptador__elementos__boton, .contenido__limpiar__boton {
         padding-top: 1rem;
     }
+
+    .footer__redes_general {
+        width: 1.4rem;
+        height: 1.4rem;
+    }
 }
 
 @media (min-width: 769px) and (max-width: 1200px) {
@@ -357,10 +384,10 @@ img {
     .contenido__encriptador__elementos__boton, .contenido__desencriptador__boton, .contenido__limpiar__boton {
         width: 11.5rem;
     }
-
 }
 
 @media (min-width: 1201px) and (max-width: 1600px) {
+
     .contenido__encriptador {
         width: 70%;
         margin: 1.25rem;
@@ -368,6 +395,7 @@ img {
 }
 
 @media (min-width: 1601px) and (max-width: 1800px) {
+    
     .contenido__encriptador {
         width: 70%;
         margin: 1.25rem;
