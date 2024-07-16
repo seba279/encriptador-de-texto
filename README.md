@@ -64,10 +64,11 @@ Extras:
  </div>
  
  <h3>Acceso al proyecto</h3>
+<h4>Enlace al repositorio</h4>
+<p>https://github.com/seba279/encriptador-de-texto/</p>
  
  <h4>Enlace para probar el proyecto</h4>
- <p>https://seba279.github.io/encriptador-de-texto/</p>
-
+ <p>https://encriptador-de-texto-smoky.vercel.app/</p>
  <h3>Tecnologías utilizadas</h3>
  <p>- HTML</p>
  <p>- CSS</p>
