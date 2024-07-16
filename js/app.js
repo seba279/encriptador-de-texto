@@ -50,7 +50,6 @@ function encriptarVocales(texto){
         o: 'obu',
         u: 'ufat'
     };
-
     return texto.replace(/e|i|a|o|u/g, vocal => frase[vocal]);
 }
 
@@ -87,7 +86,7 @@ function crearElementos() {
                 texto.value="";
                 mostrarError("La frase se pudo copiar correctamente");
                 //mensaje.style.backgroundColor = "#33211c";
-                //texto.value = fraseEncriptada;
+                texto.value = fraseEncriptada;
                 //texto.setAttribute("disabled", "true");
                 texto.focus();
             });
@@ -174,7 +173,7 @@ function validarEncriptado() {
     //Verificamos si la frase esta encriptada
     let estaEncriptado = patronEncriptado.test(texto);
     if(!estaEncriptado){
-        mostrarError("La Frase ingresada no esta encriptada");
+        mostrarError("La frase ingresada no esta encriptada");
     }else {
         const textoDesencriptado = desencriptarVocales(texto); 
         mensaje.style.display = 'flex';
