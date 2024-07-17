@@ -27,7 +27,7 @@ function configuracionInicial() {
     //Posiciona el cursor en el textarea
     texto.focus();
     feather.replace();
-    //texto.removeAttribute("disabled");
+    texto.removeAttribute("disabled");
 }
 
 //Mensaje de Error
@@ -38,7 +38,6 @@ function mostrarError(error) {
         mensaje.style.display = "none";
         texto.focus();
     }, 2000);
-    texto.value = "";
 }
 
 //Reemplaza las vocales
@@ -82,13 +81,11 @@ function crearElementos() {
             //Evento click del boton que nos permite copiar el texto
             boton.addEventListener("click", () => {
                 const fraseEncriptada = frase;
+                //console.log(fraseEncriptada);
                 navigator.clipboard.writeText(fraseEncriptada);
-                texto.value="";
                 mostrarError("La frase se pudo copiar correctamente");
-                //mensaje.style.backgroundColor = "#33211c";
+                texto.setAttribute("disabled", "true");
                 texto.value = fraseEncriptada;
-                //texto.setAttribute("disabled", "true");
-                texto.focus();
             });
 
             //Creando el icono
@@ -117,6 +114,14 @@ function mostrarResultado(elemento, frase){
     return;
 }
 
+function limpiarPonerFocus(){
+    setTimeout(() => {
+        texto.value= "";
+        texto.focus(); 
+    }, 2000);
+    
+}
+
 function agregarFrase() {
 
     let frase = texto.value;
@@ -132,11 +137,17 @@ function agregarFrase() {
 
     if (!regex.test(frase)) {
         mostrarError("Solo se permiten letras minusculas y sin acentos");
+        setTimeout(() => {
+            texto.value= "";  
+        }, 2000);
         return;
     }
 
     if(frasesNoEncriptada.includes(frase)) {
         mostrarError("No se permiten frases repetidas");
+        setTimeout(() => {
+            texto.value= "";  
+        }, 2000);
         return;
     }
 
@@ -147,10 +158,10 @@ function agregarFrase() {
         const fraseEncriptada = encriptarTexto(frase);
         frases = [...frases,fraseEncriptada];
         frasesNoEncriptada = [...frasesNoEncriptada, frase];
-        texto.value = "";
-        texto.focus();
         crearElementos();
         mostrarResultado('listaFrases', fraseEncriptada);
+        limpiarPonerFocus();
+        //Habilita el boton de Limpiar
         btnLimpiar.style.display = "flex";
     }
 }
@@ -166,6 +177,14 @@ function desencriptarVocales(texto){
     return texto.replace(/enter|imes|ai|obu|ufat/g, grupoPalabras => fraseEncriptada[grupoPalabras]);
 }
 
+function verMensaje(frase) {
+    mensaje.style.display = 'flex';
+        document.getElementById('mensaje').innerText = frase;
+        setTimeout(() => {
+            mensaje.style.display = 'none';
+        }, 3000);
+}
+
 //Verificando si la frase ingresada esta encriptada o no
 function validarEncriptado() {
     let texto = document.getElementById('textAreaEncriptada').value;
@@ -176,11 +195,7 @@ function validarEncriptado() {
         mostrarError("La frase ingresada no esta encriptada");
     }else {
         const textoDesencriptado = desencriptarVocales(texto); 
-        mensaje.style.display = 'flex';
-        document.getElementById('mensaje').innerText = textoDesencriptado;
-        setTimeout(() => {
-            mensaje.style.display = 'none';
-        }, 3000);
+        return verMensaje(textoDesencriptado);
     }
 }
 
@@ -191,28 +206,20 @@ function desencriptarTexto() {
         mostrarError("Ingrese un frase por favor");
     }else {
         validarEncriptado();
-        texto.value= "";
-        setTimeout(() => {
-            //texto.removeAttribute("disabled");
-            texto.focus(); 
-        }, 3000);
+        limpiarPonerFocus();
+        texto.removeAttribute("disabled");
     }
     return;    
 }
 
 //Funcion que limpia el textarea y el arreglo
 function limpiar() {
-    texto.value = "";
-    texto.focus();
+    limpiarPonerFocus();
+    //Eliminando los elementos de los Arreglos
     frases = [];
     frasesNoEncriptada = []
+    //Limpiando los elementos
     listaFrases.innerHTML = "";
+    //Desabilita el boton de Limpiar
     btnLimpiar.style.display = "none"; 
 }
-
-
-
-
-
-
-
