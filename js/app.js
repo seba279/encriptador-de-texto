@@ -60,52 +60,63 @@ function encriptarTexto() {
 
 //Creando los elementos de una nueva frase
 function crearElementos() {
+    listaFrases.innerHTML = "";
 
-    listaFrases.innerHTML="";
-
-    if(frases.length > 0){
-
+    if (frases.length > 0) {
         frases.forEach((frase) => {
-
-            //Creando un div
-            const div = document.createElement('div');
-            div.classList.add('listaFrases');
-            div.innerHTML = frase;
-
-            //Creando el boton
-            const boton = document.createElement('button');
-
-            //Creando una clase para el boton
-            boton.className = 'contenido__encriptador__boton_copiar';
-
-            //Evento click del boton que nos permite copiar el texto
-            boton.addEventListener("click", () => {
-                const fraseEncriptada = frase;
-                //console.log(fraseEncriptada);
-                navigator.clipboard.writeText(fraseEncriptada);
-                mostrarError("La frase se pudo copiar correctamente");
-                texto.setAttribute("disabled", "true");
-                texto.value = fraseEncriptada;
-            });
-
-            //Creando el icono
-            const icono = document.createElement('i');
-
-            //Asignandole un icono al boton(feather)
-            icono.setAttribute("data-feather", "copy");
-
-            //Creando una clase para el icono
-            icono.className = "listaFrases__icono_copiar";
-
-            boton.appendChild(icono);
-
+            const div = crearDivConFrase(frase);
+            const boton = crearBotonCopiar(frase);
             div.appendChild(boton);
-
             listaFrases.appendChild(div);
-            /* Iconos Feather */
-            feather.replace();
-        })
+        });
     }
+    feather.replace();
+}
+
+function crearDivConFrase(frase) {
+    const div = document.createElement('div');
+    div.classList.add('listaFrases');
+    div.innerHTML = frase;
+    return div;
+}
+
+function crearBotonCopiar(frase) {
+    const boton = document.createElement('button');
+    boton.className = 'contenido__encriptador__boton_copiar';
+    boton.appendChild(crearIcono());
+
+    boton.addEventListener("click", () => {
+        navigator.clipboard.writeText(frase);
+        actualizarBoton(boton);
+        texto.setAttribute("disabled", "true");
+        texto.value = frase;
+    });
+
+    return boton;
+}
+
+function crearIcono() {
+    const icono = document.createElement('i');
+    icono.setAttribute("data-feather", "copy");
+    icono.className = "listaFrases__icono_copiar";
+    return icono;
+}
+
+function actualizarBoton(boton) {
+
+    boton.setAttribute("width", "auto");
+    boton.style.borderRadius = "10px";
+    boton.style.width = "80px";
+    boton.style.color = "#cccccc";
+    boton.innerText = "Copiado";
+
+    setTimeout(() => {
+        boton.style.borderRadius = "50%";
+        boton.style.width = "";
+        boton.innerHTML = "";
+        boton.appendChild(crearIcono());
+        feather.replace();
+    }, 2000);
 }
 
 function mostrarResultado(elemento, frase){
@@ -188,9 +199,11 @@ function verMensaje(frase) {
 //Verificando si la frase ingresada esta encriptada o no
 function validarEncriptado() {
     let texto = document.getElementById('textAreaEncriptada').value;
+    //console.log(texto);
     let patronEncriptado = /enter|emi|ai|obu|ufat/;
     //Verificamos si la frase esta encriptada
     let estaEncriptado = patronEncriptado.test(texto);
+    //console.log(estaEncriptado);
     if(!estaEncriptado){
         mostrarError("La frase ingresada no esta encriptada");
     }else {
@@ -202,6 +215,7 @@ function validarEncriptado() {
 //Funcion para desencriptar la frase ingresada 
 function desencriptarTexto() {  
     const fraseEncriptada = texto.value;
+
     if(fraseEncriptada === ""){
         mostrarError("Ingrese un frase por favor");
     }else {
