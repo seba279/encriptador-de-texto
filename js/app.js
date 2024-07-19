@@ -236,4 +236,6 @@ function limpiar() {
     listaFrases.innerHTML = "";
     //Desabilita el boton de Limpiar
     btnLimpiar.style.display = "none"; 
+    //Habilitando el texarea
+    texto.removeAttribute("disabled");
 }
