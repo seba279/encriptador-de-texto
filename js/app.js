@@ -103,16 +103,12 @@ function crearIcono() {
 }
 
 function actualizarBoton(boton) {
-
-    boton.setAttribute("width", "auto");
-    boton.style.borderRadius = "10px";
-    boton.style.width = "80px";
-    boton.style.color = "#cccccc";
+    
+    boton.style = "border-radius: 10px; width: 80px; color: #cccccc";
     boton.innerText = "Copiado";
 
     setTimeout(() => {
-        boton.style.borderRadius = "50%";
-        boton.style.width = "";
+        boton.style = "border-radius: 50%; color: initial";
         boton.innerHTML = "";
         boton.appendChild(crearIcono());
         feather.replace();
@@ -228,7 +224,7 @@ function desencriptarTexto() {
 
 //Funcion que limpia el textarea y el arreglo
 function limpiar() {
-    limpiarPonerFocus();
+    
     //Eliminando los elementos de los Arreglos
     frases = [];
     frasesNoEncriptada = []
@@ -238,4 +234,6 @@ function limpiar() {
     btnLimpiar.style.display = "none"; 
     //Habilitando el texarea
     texto.removeAttribute("disabled");
+    texto.focus(); 
+    texto.value = "";
 }
