@@ -131,46 +131,24 @@ function limpiarPonerFocus(){
 
 function agregarFrase() {
 
-    let frase = texto.value;
-    //texto.removeAttribute("disabled");
+  let frase = texto.value;
 
-    if(frase === ""){
-        mostrarError("Ingrese una frase por favor...");
-        return;
-    }
+    if (frase === "") return mostrarError("Ingrese una frase por favor...");
 
-    //Validacion de letras minusculas y sin carcateres especiales
     const regex = /^[a-z ]*$/;
+    if (!regex.test(frase)) return mostrarError("Solo se permiten letras minusculas y sin acentos"), setTimeout(() => texto.value = "", 2000);
 
-    if (!regex.test(frase)) {
-        mostrarError("Solo se permiten letras minusculas y sin acentos");
-        setTimeout(() => {
-            texto.value= "";  
-        }, 2000);
-        return;
-    }
+    if (frasesNoEncriptada.includes(frase)) return mostrarError("No se permiten frases repetidas"), setTimeout(() => texto.value = "", 2000);
 
-    if(frasesNoEncriptada.includes(frase)) {
-        mostrarError("No se permiten frases repetidas");
-        setTimeout(() => {
-            texto.value= "";  
-        }, 2000);
-        return;
-    }
+    if (frases.includes(frase)) return mostrarError("La frase ingresada ya esta encriptada");
 
-    if(frases.includes(frase)) {
-        mostrarError("La frase ingresada ya esta encriptada");
-        return;
-    }else {
-        const fraseEncriptada = encriptarTexto(frase);
-        frases = [...frases,fraseEncriptada];
-        frasesNoEncriptada = [...frasesNoEncriptada, frase];
-        crearElementos();
-        mostrarResultado('listaFrases', fraseEncriptada);
-        limpiarPonerFocus();
-        //Habilita el boton de Limpiar
-        btnLimpiar.style.display = "flex";
-    }
+    const fraseEncriptada = encriptarTexto(frase);
+    frases = [...frases, fraseEncriptada];
+    frasesNoEncriptada = [...frasesNoEncriptada, frase];
+    crearElementos();
+    mostrarResultado('listaFrases', fraseEncriptada);
+    limpiarPonerFocus();
+    btnLimpiar.style.display = "flex";
 }
 
 function desencriptarVocales(texto){
