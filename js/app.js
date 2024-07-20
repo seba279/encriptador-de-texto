@@ -9,78 +9,53 @@ let btnLimpiar = document.getElementById('botonLimpiar');
 let frases = [];
 let frasesNoEncriptada = [];
 
-/* EVENTOS */
-//Carga configuraciones iniciales
-document.addEventListener("DOMContentLoaded", configuracionInicial());
-
-//Agrega un frase
-btnEncriptar.addEventListener("click", agregarFrase);
-
-//Desencripta una frase
-btnDesencriptar.addEventListener('click', desencriptarTexto);
-
-//Limpia el textarea y el arreglo
-btnLimpiar.addEventListener('click', limpiar);
-
 /* FUNCIONES */
-function configuracionInicial() {
-    //Posiciona el cursor en el textarea
+const configuracionInicial = () => {
     texto.focus();
     feather.replace();
     texto.removeAttribute("disabled");
 }
 
-//Mensaje de Error
-function mostrarError(error) {
+const mostrarError = error => {
     mensaje.style.display = "flex";
-    mensaje.textContent = error;
+     mensaje.textContent = error;
     setTimeout(() => { 
         mensaje.style.display = "none";
         texto.focus();
     }, 2000);
 }
 
-//Reemplaza las vocales
-function encriptarVocales(texto){
-    const frase = {
-        e: 'enter',
-        i: 'imes',
-        a: 'ai',
-        o: 'obu',
-        u: 'ufat'
-    };
-    return texto.replace(/e|i|a|o|u/g, vocal => frase[vocal]);
-}
+const encriptarVocales = texto => texto.replace(/[eioua]/g, c => ({e: 'enter', i: 'imes', a: 'ai', o: 'obu', u: 'ufat'})[c]);
 
-//Funcion para encriptar la frase ingresada
-function encriptarTexto() {
-    let frase = texto.value;
-    return encriptarVocales(frase);
-}
+const encriptarTexto = () => encriptarVocales(texto.value);
 
-//Creando los elementos de una nueva frase
-function crearElementos() {
-    listaFrases.innerHTML = "";
-
-    if (frases.length > 0) {
-        frases.forEach((frase) => {
-            const div = crearDivConFrase(frase);
-            const boton = crearBotonCopiar(frase);
-            div.appendChild(boton);
-            listaFrases.appendChild(div);
-        });
-    }
-    feather.replace();
-}
-
-function crearDivConFrase(frase) {
+const crearDivConFrase = (frase) => {
     const div = document.createElement('div');
     div.classList.add('listaFrases');
     div.innerHTML = frase;
     return div;
 }
 
-function crearBotonCopiar(frase) {
+const crearIcono = () => {
+    const icono = document.createElement('i');
+    icono.setAttribute("data-feather", "copy");
+    icono.className = "listaFrases__icono_copiar";
+    return icono;
+}
+
+const actualizarBoton = (boton) => {
+    boton.style = "border-radius: 10px; width: 80px; color: #cccccc";
+    boton.innerText = "Copiado";
+
+    setTimeout(() => {
+        boton.style = "border-radius: 50%; color: initial";
+        boton.innerHTML = "";
+        boton.appendChild(crearIcono());
+        feather.replace();
+    }, 2000);
+}
+
+const crearBotonCopiar = (frase) => {
     const boton = document.createElement('button');
     boton.className = 'contenido__encriptador__boton_copiar';
     boton.appendChild(crearIcono());
@@ -95,43 +70,27 @@ function crearBotonCopiar(frase) {
     return boton;
 }
 
-function crearIcono() {
-    const icono = document.createElement('i');
-    icono.setAttribute("data-feather", "copy");
-    icono.className = "listaFrases__icono_copiar";
-    return icono;
+//Creando los elementos de una nueva frase
+const crearElementos = () => {
+    listaFrases.innerHTML = "";
+
+    if (frases.length > 0) {
+        frases.forEach((frase) => {
+            const div = crearDivConFrase(frase);
+            const boton = crearBotonCopiar(frase);
+            div.appendChild(boton);
+            listaFrases.appendChild(div);
+        });
+    }
+    feather.replace();
 }
 
-function actualizarBoton(boton) {
-    
-    boton.style = "border-radius: 10px; width: 80px; color: #cccccc";
-    boton.innerText = "Copiado";
+const mostrarResultado = (elemento, frase) => document.getElementsByClassName(elemento).innerHTML = frase;
 
-    setTimeout(() => {
-        boton.style = "border-radius: 50%; color: initial";
-        boton.innerHTML = "";
-        boton.appendChild(crearIcono());
-        feather.replace();
-    }, 2000);
-}
+const limpiarPonerFocus = () => {setTimeout(() => {texto.value= ""; texto.focus();}, 2000);}
 
-function mostrarResultado(elemento, frase){
-    let elementoHTML = document.getElementsByClassName(elemento);
-    elementoHTML.innerHTML = frase;
-    return;
-}
-
-function limpiarPonerFocus(){
-    setTimeout(() => {
-        texto.value= "";
-        texto.focus(); 
-    }, 2000);
-    
-}
-
-function agregarFrase() {
-
-  let frase = texto.value;
+const agregarFrase = () => {
+    let frase = texto.value;
 
     if (frase === "") return mostrarError("Ingrese una frase por favor...");
 
@@ -151,58 +110,30 @@ function agregarFrase() {
     btnLimpiar.style.display = "flex";
 }
 
-function desencriptarVocales(texto){
-    const fraseEncriptada = {
-        enter: 'e',
-        imes: 'i',
-        ai: 'a',
-        obu: 'o',
-        ufat: 'u'
-    };
-    return texto.replace(/enter|imes|ai|obu|ufat/g, grupoPalabras => fraseEncriptada[grupoPalabras]);
-}
+const desencriptarVocales = texto => texto.replace(/enter|imes|ai|obu|ufat/g, m => ({enter: 'e', imes: 'i', ai: 'a', obu: 'o', ufat: 'u'})[m]);
 
-function verMensaje(frase) {
+const verMensaje = frase => {
     mensaje.style.display = 'flex';
-        document.getElementById('mensaje').innerText = frase;
-        setTimeout(() => {
-            mensaje.style.display = 'none';
-        }, 3000);
+    document.getElementById('mensaje').innerText = frase;
+    setTimeout(() => {
+        mensaje.style.display = 'none';
+    }, 3000);
 }
 
-//Verificando si la frase ingresada esta encriptada o no
-function validarEncriptado() {
-    let texto = document.getElementById('textAreaEncriptada').value;
-    //console.log(texto);
-    let patronEncriptado = /enter|emi|ai|obu|ufat/;
-    //Verificamos si la frase esta encriptada
-    let estaEncriptado = patronEncriptado.test(texto);
-    //console.log(estaEncriptado);
-    if(!estaEncriptado){
-        mostrarError("La frase ingresada no esta encriptada");
-    }else {
-        const textoDesencriptado = desencriptarVocales(texto); 
-        return verMensaje(textoDesencriptado);
-    }
+const validarEncriptado = () => {
+    const texto = document.getElementById('textAreaEncriptada').value;
+    const estaEncriptado = /enter|emi|ai|obu|ufat/.test(texto);
+    return estaEncriptado ? verMensaje(desencriptarVocales(texto)) : mostrarError("La frase ingresada no está encriptada");
 }
 
-//Funcion para desencriptar la frase ingresada 
-function desencriptarTexto() {  
-    const fraseEncriptada = texto.value;
-
-    if(fraseEncriptada === ""){
-        mostrarError("Ingrese un frase por favor");
-    }else {
-        validarEncriptado();
-        limpiarPonerFocus();
-        texto.removeAttribute("disabled");
-    }
-    return;    
+const desencriptarTexto = () => {
+    if(!texto.value) return mostrarError("Ingrese un frase por favor"); 
+    validarEncriptado();
+    limpiarPonerFocus();
+    texto.removeAttribute("disabled");
 }
 
-//Funcion que limpia el textarea y el arreglo
-function limpiar() {
-    
+const limpiar = () => {
     //Eliminando los elementos de los Arreglos
     frases = [];
     frasesNoEncriptada = []
@@ -210,8 +141,20 @@ function limpiar() {
     listaFrases.innerHTML = "";
     //Desabilita el boton de Limpiar
     btnLimpiar.style.display = "none"; 
-    //Habilitando el texarea
     texto.removeAttribute("disabled");
     texto.focus(); 
     texto.value = "";
 }
+
+/* EVENTOS */
+//Carga configuraciones iniciales
+document.addEventListener("DOMContentLoaded", configuracionInicial);
+
+//Agrega un frase
+btnEncriptar.addEventListener("click", agregarFrase);
+
+//Desencripta una frase
+btnDesencriptar.addEventListener('click', desencriptarTexto);
+
+//Limpia el textarea y el arreglo
+btnLimpiar.addEventListener('click', limpiar);
