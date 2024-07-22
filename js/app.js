@@ -18,7 +18,7 @@ const configuracionInicial = () => {
 
 const mostrarError = error => {
     mensaje.style.display = "flex";
-     mensaje.textContent = error;
+    mensaje.textContent = error;
     setTimeout(() => { 
         mensaje.style.display = "none";
         texto.focus();
@@ -46,7 +46,6 @@ const crearIcono = () => {
 const actualizarBoton = (boton) => {
     boton.style = "border-radius: 10px; width: 80px; color: #cccccc";
     boton.innerText = "Copiado";
-
     setTimeout(() => {
         boton.style = "border-radius: 50%; color: initial";
         boton.innerHTML = "";
@@ -66,14 +65,12 @@ const crearBotonCopiar = (frase) => {
         texto.setAttribute("disabled", "true");
         texto.value = frase;
     });
-
     return boton;
 }
 
 //Creando los elementos de una nueva frase
 const crearElementos = () => {
     listaFrases.innerHTML = "";
-
     if (frases.length > 0) {
         frases.forEach((frase) => {
             const div = crearDivConFrase(frase);
@@ -87,20 +84,24 @@ const crearElementos = () => {
 
 const mostrarResultado = (elemento, frase) => document.getElementsByClassName(elemento).innerHTML = frase;
 
-const limpiarPonerFocus = () => {setTimeout(() => {texto.value= ""; texto.focus();}, 2000);}
+const limpiarPonerFocus = () => {
+    setTimeout(() => {
+        texto.value= ""; texto.focus();
+    }, 2000);
+}
+
+const caracteresValidos = (frase) => {
+    const regex = /^[a-z ]*$/;
+    return regex.test(frase);
+};
 
 const agregarFrase = () => {
     let frase = texto.value;
-
-    if (frase === "") return mostrarError("Ingrese una frase por favor...");
-
-    const regex = /^[a-z ]*$/;
-    if (!regex.test(frase)) return mostrarError("Solo se permiten letras minusculas y sin acentos"), setTimeout(() => texto.value = "", 2000);
-
-    if (frasesNoEncriptada.includes(frase)) return mostrarError("No se permiten frases repetidas"), setTimeout(() => texto.value = "", 2000);
-
-    if (frases.includes(frase)) return mostrarError("La frase ingresada ya esta encriptada");
-
+    if(!frase) return mostrarError("Ingrese una frase por favor...");
+    if(!caracteresValidos(frase)) return mostrarError("Solo se permiten letras minusculas y sin acentos"), setTimeout(() => texto.value = "", 2000);
+    if(frasesNoEncriptada.includes(frase)) return mostrarError("No se permiten frases repetidas"), setTimeout(() => texto.value = "", 2000);
+    if(frases.includes(frase)) return mostrarError("La frase ingresada ya esta encriptada");
+    
     const fraseEncriptada = encriptarTexto(frase);
     frases = [...frases, fraseEncriptada];
     frasesNoEncriptada = [...frasesNoEncriptada, frase];
@@ -127,7 +128,9 @@ const validarEncriptado = () => {
 }
 
 const desencriptarTexto = () => {
-    if(!texto.value) return mostrarError("Ingrese un frase por favor"); 
+    let frase = texto.value;
+    if(!frase) return mostrarError("Ingrese un frase por favor"); 
+    if(!caracteresValidos(frase)) return mostrarError("Solo se permiten letras minusculas y sin acentos"), setTimeout(() => texto.value = "", 2000);
     validarEncriptado();
     limpiarPonerFocus();
     texto.removeAttribute("disabled");
