@@ -97,39 +97,56 @@ const encriptarVocales = texto => texto.replace(/[eiaou]/g, c => ({e: 'enter', i
 
 const encriptarTexto = () => encriptarVocales(texto.value);
 
-//const verificandoVocales = (frase) => {
-    //const vocales = ['a', 'e', 'i', 'o', 'u'];
-    //let vocal = false;
-    
-    //frase.split('').forEach(texto => {
-        //if (vocales.includes(texto)) {
-            //vocal = true;
-        //}
-    //});
-    //return vocal;
-//}
-
 const caracteresValidos = (frase) => {
     const regex = /^[a-z .,;!¡?¿()]*$/;
     return regex.test(frase);
 };
 
+const tieneVocales = (palabra) => {
+    const vocales = /[aeiou]/;
+    return vocales.test(palabra);
+}
+
+const verificarVocales = (palabras) => {
+    const palabrasArray = palabras.split(' ');
+    let ningunaConVocales = true;
+
+    palabrasArray.forEach(palabra => {
+        if (tieneVocales(palabra)) {
+            console.log(`La palabra "${palabra}" tiene vocales.`);
+            ningunaConVocales = false;
+        }else {
+            console.log(`La palabra "${palabra}" no tiene vocales.`);
+        }
+    });
+
+    if (ningunaConVocales) {
+        return ningunaConVocales;
+    }
+}
+
 const agregarFrase = () => {
     let frase = texto.value;
-
+    
+    //Validando para que ingrese una Frase o palabra
     if (!frase) return mostrarError("Ingrese una frase por favor...");
-
-    //if (caracteresEspeciales(frase)) return mostrarError("La frase contiene caracteres especiales no permitidos."), setTimeout(() => texto.value = "", 2000);
-
+    
+    //Validando caracteres permitidos
     if (!caracteresValidos(frase)) return mostrarError("Solo se permiten letras minusculas y sin acentos."), setTimeout(() => texto.value = "", 2000);
-
+    
+    //Validando para que no se repitan las frases
     if (frasesNoEncriptada.includes(frase)) return mostrarError("No se permiten frases repetidas."), setTimeout(() => texto.value = "", 2000);
 
+    //Validando para que no pueda volver a encriptar la frase
     if (frases.includes(frase)) return mostrarError("La frase ingresada ya esta encriptada.");
 
-    //if(!verificandoVocales(frase)) return mostrarError("El texto ingresado no incluye vocales, no se puede encriptar."), setTimeout(() => texto.value = "", 2000);
-    
+    //Validando que las palabras o frase ingresada tenga vocales para realizar la encriptacion.
+    if(verificarVocales(frase)) return mostrarError("La frase ingresada no tiene vocales, no se puede encriptar."), setTimeout(() => texto.value = "", 2000);
+
+    //Encriptando la Frase
     const fraseEncriptada = encriptarTexto(frase);
+
+    //Almacenando la frase en un array
     frases = [...frases, fraseEncriptada];
     frasesNoEncriptada = [...frasesNoEncriptada, frase];
     crearElementos();
@@ -160,8 +177,14 @@ const validarEncriptado = () => {
 
 const desencriptarTexto = () => {
     let frase = texto.value;
+    
+    //Validando que se ingrese una frase o palabra al hacer click sobre el boton de desencriptar
     if(!frase) return mostrarError("Ingrese un frase por favor"); 
+
+    //Validando que se ingresen carcateres permitidos
     if(!caracteresValidos(frase)) return mostrarError("Solo se permiten letras minusculas y sin acentos"), setTimeout(() => texto.value = "", 2000);
+
+    //Verificamos si la frase o palabra ingresada esta o no encriptada
     validarEncriptado();
     limpiarPonerFocus();
     texto.removeAttribute("disabled");
