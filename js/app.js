@@ -93,7 +93,7 @@ const crearElementos = () => {
     feather.replace();
 }
 
-const encriptarVocales = texto => texto.replace(/[eioua]/g, c => ({e: 'enter', i: 'imes', a: 'ai', o: 'obu', u: 'ufat'})[c]);
+const encriptarVocales = texto => texto.replace(/[eiaou]/g, c => ({e: 'enter', i: 'imes', a: 'ai', o: 'ober', u: 'ufat'})[c]);
 
 const encriptarTexto = () => encriptarVocales(texto.value);
 
@@ -128,7 +128,7 @@ btnEncriptar.addEventListener("click", agregarFrase);
 
 /* Desencriptando una Frase */
 
-const desencriptarVocales = texto => texto.replace(/enter|imes|ai|obu|ufat/g, m => ({enter: 'e', imes: 'i', ai: 'a', obu: 'o', ufat: 'u'})[m]);
+const desencriptarVocales = texto => texto.replace(/enter|imes|ai|ober|ufat/g, m => ({enter: 'e', imes: 'i', ai: 'a', ober: 'o', ufat: 'u'})[m]);
 
 const verMensaje = frase => {
     mensaje.style.display = 'flex';
@@ -140,7 +140,7 @@ const verMensaje = frase => {
 
 const validarEncriptado = () => {
     const texto = document.getElementById('textAreaEncriptada').value;
-    const estaEncriptado = /enter|emi|ai|obu|ufat/.test(texto);
+    const estaEncriptado = /enter|emi|ai|ober|ufat/.test(texto);
     return estaEncriptado ? verMensaje(desencriptarVocales(texto)) : mostrarError("La frase ingresada no está encriptada");
 }
 
