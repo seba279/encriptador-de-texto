@@ -97,8 +97,20 @@ const encriptarVocales = texto => texto.replace(/[eiaou]/g, c => ({e: 'enter', i
 
 const encriptarTexto = () => encriptarVocales(texto.value);
 
+//const verificandoVocales = (frase) => {
+    //const vocales = ['a', 'e', 'i', 'o', 'u'];
+    //let vocal = false;
+    
+    //frase.split('').forEach(texto => {
+        //if (vocales.includes(texto)) {
+            //vocal = true;
+        //}
+    //});
+    //return vocal;
+//}
+
 const caracteresValidos = (frase) => {
-    const regex = /^[a-z ]*$/;
+    const regex = /^[a-z .,;!¡?¿()]*$/;
     return regex.test(frase);
 };
 
@@ -115,6 +127,8 @@ const agregarFrase = () => {
 
     if (frases.includes(frase)) return mostrarError("La frase ingresada ya esta encriptada.");
 
+    //if(!verificandoVocales(frase)) return mostrarError("El texto ingresado no incluye vocales, no se puede encriptar."), setTimeout(() => texto.value = "", 2000);
+    
     const fraseEncriptada = encriptarTexto(frase);
     frases = [...frases, fraseEncriptada];
     frasesNoEncriptada = [...frasesNoEncriptada, frase];
