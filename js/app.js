@@ -9,25 +9,34 @@ let btnLimpiar = document.getElementById('botonLimpiar');
 let frases = [];
 let frasesNoEncriptada = [];
 
-/* FUNCIONES */
+/* Cargando configuraciones Iniciales */
+
 const configuracionInicial = () => {
     texto.focus();
     feather.replace();
     texto.removeAttribute("disabled");
 }
 
+document.addEventListener("DOMContentLoaded", configuracionInicial);
+
+/* Encriptando una Frase */
+
+const limpiarPonerFocus = () => {
+    setTimeout(() => {
+        texto.value= ""; texto.focus();
+    }, 2000);
+}
+
+const mostrarResultado = (elemento, frase) => document.getElementsByClassName(elemento).innerHTML = frase;
+
 const mostrarError = error => {
     mensaje.style.display = "flex";
-    mensaje.textContent = error;
+     mensaje.textContent = error;
     setTimeout(() => { 
         mensaje.style.display = "none";
         texto.focus();
     }, 2000);
 }
-
-const encriptarVocales = texto => texto.replace(/[eioua]/g, c => ({e: 'enter', i: 'imes', a: 'ai', o: 'obu', u: 'ufat'})[c]);
-
-const encriptarTexto = () => encriptarVocales(texto.value);
 
 const crearDivConFrase = (frase) => {
     const div = document.createElement('div');
@@ -46,6 +55,7 @@ const crearIcono = () => {
 const actualizarBoton = (boton) => {
     boton.style = "border-radius: 10px; width: 80px; color: #cccccc";
     boton.innerText = "Copiado";
+
     setTimeout(() => {
         boton.style = "border-radius: 50%; color: initial";
         boton.innerHTML = "";
@@ -71,6 +81,7 @@ const crearBotonCopiar = (frase) => {
 //Creando los elementos de una nueva frase
 const crearElementos = () => {
     listaFrases.innerHTML = "";
+
     if (frases.length > 0) {
         frases.forEach((frase) => {
             const div = crearDivConFrase(frase);
@@ -82,13 +93,9 @@ const crearElementos = () => {
     feather.replace();
 }
 
-const mostrarResultado = (elemento, frase) => document.getElementsByClassName(elemento).innerHTML = frase;
+const encriptarVocales = texto => texto.replace(/[eioua]/g, c => ({e: 'enter', i: 'imes', a: 'ai', o: 'obu', u: 'ufat'})[c]);
 
-const limpiarPonerFocus = () => {
-    setTimeout(() => {
-        texto.value= ""; texto.focus();
-    }, 2000);
-}
+const encriptarTexto = () => encriptarVocales(texto.value);
 
 const caracteresValidos = (frase) => {
     const regex = /^[a-z ]*$/;
@@ -97,11 +104,17 @@ const caracteresValidos = (frase) => {
 
 const agregarFrase = () => {
     let frase = texto.value;
-    if(!frase) return mostrarError("Ingrese una frase por favor...");
-    if(!caracteresValidos(frase)) return mostrarError("Solo se permiten letras minusculas y sin acentos"), setTimeout(() => texto.value = "", 2000);
-    if(frasesNoEncriptada.includes(frase)) return mostrarError("No se permiten frases repetidas"), setTimeout(() => texto.value = "", 2000);
-    if(frases.includes(frase)) return mostrarError("La frase ingresada ya esta encriptada");
-    
+
+    if (!frase) return mostrarError("Ingrese una frase por favor...");
+
+    //if (caracteresEspeciales(frase)) return mostrarError("La frase contiene caracteres especiales no permitidos."), setTimeout(() => texto.value = "", 2000);
+
+    if (!caracteresValidos(frase)) return mostrarError("Solo se permiten letras minusculas y sin acentos."), setTimeout(() => texto.value = "", 2000);
+
+    if (frasesNoEncriptada.includes(frase)) return mostrarError("No se permiten frases repetidas."), setTimeout(() => texto.value = "", 2000);
+
+    if (frases.includes(frase)) return mostrarError("La frase ingresada ya esta encriptada.");
+
     const fraseEncriptada = encriptarTexto(frase);
     frases = [...frases, fraseEncriptada];
     frasesNoEncriptada = [...frasesNoEncriptada, frase];
@@ -110,6 +123,10 @@ const agregarFrase = () => {
     limpiarPonerFocus();
     btnLimpiar.style.display = "flex";
 }
+
+btnEncriptar.addEventListener("click", agregarFrase);
+
+/* Desencriptando una Frase */
 
 const desencriptarVocales = texto => texto.replace(/enter|imes|ai|obu|ufat/g, m => ({enter: 'e', imes: 'i', ai: 'a', obu: 'o', ufat: 'u'})[m]);
 
@@ -136,6 +153,10 @@ const desencriptarTexto = () => {
     texto.removeAttribute("disabled");
 }
 
+btnDesencriptar.addEventListener('click', desencriptarTexto);
+
+/* Limpiando el Textarea y los Arreglos */
+
 const limpiar = () => {
     //Eliminando los elementos de los Arreglos
     frases = [];
@@ -149,15 +170,4 @@ const limpiar = () => {
     texto.value = "";
 }
 
-/* EVENTOS */
-//Carga configuraciones iniciales
-document.addEventListener("DOMContentLoaded", configuracionInicial);
-
-//Agrega un frase
-btnEncriptar.addEventListener("click", agregarFrase);
-
-//Desencripta una frase
-btnDesencriptar.addEventListener('click', desencriptarTexto);
-
-//Limpia el textarea y el arreglo
 btnLimpiar.addEventListener('click', limpiar);
