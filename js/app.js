@@ -98,7 +98,7 @@ const encriptarVocales = texto => texto.replace(/[eiaou]/g, c => ({e: 'enter', i
 const encriptarTexto = () => encriptarVocales(texto.value);
 
 const caracteresValidos = (frase) => {
-    const regex = /^[a-z .,;!¡?¿()]*$/;
+    const regex = /^[a-z !]*$/;
     return regex.test(frase);
 };
 
