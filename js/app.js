@@ -171,7 +171,7 @@ const verMensaje = frase => {
 
 const validarEncriptado = () => {
     const texto = document.getElementById('textAreaEncriptada').value;
-    const estaEncriptado = /enter|emi|ai|ober|ufat/.test(texto);
+    const estaEncriptado = /enter|imes|ai|ober|ufat/.test(texto);
     return estaEncriptado ? verMensaje(desencriptarVocales(texto)) : mostrarError("La frase ingresada no está encriptada");
 }
 
