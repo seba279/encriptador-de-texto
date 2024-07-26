@@ -107,23 +107,7 @@ const tieneVocales = (palabra) => {
     return vocales.test(palabra);
 }
 
-const verificarVocales = (palabras) => {
-    const palabrasArray = palabras.split(' ');
-    let ningunaConVocales = true;
-
-    palabrasArray.forEach(palabra => {
-        if (tieneVocales(palabra)) {
-            console.log(`La palabra "${palabra}" tiene vocales.`);
-            ningunaConVocales = false;
-        }else {
-            console.log(`La palabra "${palabra}" no tiene vocales.`);
-        }
-    });
-
-    if (ningunaConVocales) {
-        return ningunaConVocales;
-    }
-}
+const verificarVocales = palabras => palabras.split(' ').every(palabra => !tieneVocales(palabra));
 
 const agregarFrase = () => {
     let frase = texto.value;
