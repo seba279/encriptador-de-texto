@@ -1,24 +1,42 @@
 @import url('https://fonts.googleapis.com/css2?family=Inspiration&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Shadows+Into+Light&display=swap');
 
 :root {
-    /* Colores */
-    --color-primario: #ff0000a7;
-    --color-secundario: #a9a9a973;
-    --color-terciario: #ffffff;
-    --color-cuarto: #67be9b;
-    --color-quinto: #d8d4d4;
-    --color-sexto: #a9a9a9b7;
-    --color-septimo: #000000ee;
-    --color-octavo: #f7f7f7;
-    --color-noveno: #cccccc;
-    --color-decimo: #f0f0f0;
 
-    /* Tamaños */
-    --rem-primario: 0.625rem;
+    /* Colores */
+    --color-1: #ff0000a7;
+    --color-2: #a9a9a973;
+    --color-3: #ffffff;
+    --color-4: #67be9b;
+    --color-5: #d8d4d4;
+    --color-6: #a9a9a9b7;
+    --color-7: #000000ee;
+    --color-8: #f7f7f7;
+    --color-9: #cccccc;
 
     /* Fuentes */
-    --fuente-primaria: "Shadows Into Light";
-    --fuente-secondaria: "Roboto";
+    --font-family-1: "Shadows Into Light";
+    --font-family-2: "Roboto";
+
+    /* Tamaño de las Fuentes */
+    --fs-1: 2.3rem;
+    --fs-2: 2rem;
+    --fs-3: 1.7rem;
+    --fs-4: 1.5rem;
+    --fs-5: 1.25rem;
+    --fs-6: 1.2rem;
+    --fs-7: 1.125rem;
+    --fs-8: 1.1rem;
+    --fs-9: 1rem;
+    --fs-10: 0.9rem;
+
+    /* Padding */
+    --pd-1: 1.5rem;
+    --pd-2: 1.25rem;
+    --pd-3: 1rem;
+    --pd-4: 0.9rem;
+    --pd-5: 0.8rem;
+    --pd-6: 0.6rem;
+    --pd-7: 0.5rem;
 }
 
 * {
@@ -35,35 +53,35 @@ body {
 }
 
 header {
-    background-color: var(--color-primario);
+    background-color: var(--color-1);
     height: 4rem;
 }
 
 h1 {
-    font-size: 2.3rem;
-    padding: 0.5rem;
-    color: var(--color-primario);
-    font-family: var(--fuente-primaria);
+    font-size: var(--fs-1);
+    padding: var(--pd-7);
+    color: var(--color-1);
+    font-family: var(--font-family-1);
     font-weight: 400;
     font-style: normal;
 }
 
 strong {
-    font-size: 1.7rem;
+    font-size: var(--fs-3);
     color: #D8D4D4; 
-    font-family: var(--fuente-primaria);
+    font-family: var(--font-family-1);
     font-weight: 300;
     font-style: normal;
 }
 
 footer {
-    background-color: var(--color-septimo);
-    color: var(--color-sexto);
+    background-color: var(--color-7);
+    color: var(--color-6);
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 1.5rem;
-    font-family: var(--fuente-secondaria);
+    padding: var(--pd-1);
+    font-family: var(--font-family-2);
     font-weight: 300;
     font-style: normal;
     gap: 0.4rem;
@@ -71,12 +89,12 @@ footer {
 
 
 span {
-    color: var(--color-octavo);
-    font-size: 1rem;
+    color: var(--color-8);
+    font-size: var(--fs-9);
 }
 
 p {
-    font-size: 1rem;
+    font-size: var(--fs-9);
 }
 
 img {
@@ -102,9 +120,9 @@ img {
 
 .header__menu__link {
     text-decoration: none;
-    color: var(--color-octavo);
-    font-size: 1.2rem;
-    font-family: var(--fuente-secondaria);
+    color: var(--color-8);
+    font-size: var(--fs-6);
+    font-family: var(--font-family-2);
     font-weight: 400;
     font-style: normal;
 }
@@ -125,15 +143,15 @@ img {
     border-radius: 0.5rem;
     margin-top: 0.6rem;
     padding: 0.7rem;
-    color: var(--color-terciario);
-    background-color: var(--color-primario);
-    font-size: 1.2rem;
+    color: var(--color-3);
+    background-color: var(--color-1);
+    font-size: var(--fs-6);
     margin-bottom: 0.6rem;
     height: auto;
     line-height: 1.6rem;
     word-wrap: break-word;
     text-align: justify;
-    padding: 0.9rem;
+    padding: var(--pd-4);
 }
 
 .contenido__encriptador__elementos {
@@ -146,41 +164,41 @@ img {
 
 .contenido__encriptador__elementos__texto {
     height: 6.25rem;
-    border: 0.125rem solid var(--color-quinto);
-    border-radius: var(--rem-primario);
+    border: 0.125rem solid var(--color-5);
+    border-radius:  0.625rem;
     outline: none;
-    padding: 0.6rem;
-    color: var(--color-secundario);
+    padding: var(--pd-6);
+    color: var(--color-2);
 }
 
 .contenido__encriptador__elementos__texto::placeholder {
-    color: var(--color-noveno);
-    font-size: 0.9rem;
+    color: var(--color-9);
+    font-size: var(--fs-10);
 }
 
 .contenido__encriptador__elementos__boton, .contenido__desencriptador__boton, .contenido__limpiar__boton {
-    background-color: var(--color-septimo);
-    font-size: 1rem;
-    color: var(--color-terciario);
+    background-color: var(--color-7);
+    font-size: var(--fs-9);
+    color: var(--color-3);
     width: 12.5rem;
     height: 3.125rem;
     text-align: center;
-    margin-top: var(--rem-primario);
-    border-radius: var(--rem-primario);
+    margin-top: 0.625rem;
+    border-radius: 0.625rem;
     border: none;
-    box-shadow: 0 0.3125rem 0.3125rem 0 var(--color-secundario);
+    box-shadow: 0 0.3125rem 0.3125rem 0 var(--color-2);
     display: flex;
     gap: 0.6rem;
     flex-direction: row-reverse;
     justify-content: space-between;
-    padding: 1.5rem;
+    padding: var(--pd-1);
     padding-top: 1rem;
     
 }
 
 .contenido__encriptador__elementos__boton:hover, .contenido__desencriptador__boton:hover, .contenido__limpiar__boton:hover {
-    background-color: var(--color-terciario);
-    color: var(--color-sexto);
+    background-color: var(--color-3);
+    color: var(--color-6);
     border: none;
 }
 
@@ -191,20 +209,20 @@ img {
 .contenido__botones {
     display: flex;
     justify-content: start;
-    gap: var(--rem-primario);
+    gap: 0.625rem;
 }
 
 .contenedor {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: var(--color-primario);
+    background-color: var(--color-1);
     text-align: center;
-    margin-top: var(--rem-primario);
-    border-radius: var(--rem-primario);
+    margin-top: 0.625rem;
+    border-radius: 0.625rem;
     height: 4rem;
-    color: var(--color-octavo);
-    font-size: 1.125rem;
+    color: var(--color-8);
+    font-size: var(--fs-7);
 }
 
 .listaFrases {
@@ -212,34 +230,34 @@ img {
     justify-content: space-between;
     align-items: center;
     border-radius: 0.5rem;
-    margin-top:  var(--rem-primario);
-    padding: var(--rem-primario);
-    color: var(--color-terciario);
-    background-color: var(--color-cuarto);
-    font-size: 1.125rem;
-    margin-bottom:  var(--rem-primario);
+    margin-top:  0.625rem;
+    padding: 0.625rem;
+    color: var(--color-3);
+    background-color: var(--color-4);
+    font-size: var(--fs-7);
+    margin-bottom:  0.625rem;
     height: auto;
     line-height: 1.6rem;
     word-wrap: break-word;
-    padding: 1.25rem;
-    box-shadow: 0.3125rem 0.3125rem 0.3125rem var(--color-secundario);
+    padding: var(--pd-2);
+    box-shadow: 0.3125rem 0.3125rem 0.3125rem var(--color-2);
     flex-wrap: wrap-reverse;
     gap: 0.5rem;
 }
 
 .listaFrases__icono_copiar {
-    color: var(--color-cuarto);
+    color: var(--color-4);
     width: 1rem;
     height: 1rem;
     cursor: pointer;
 }
 
 .listaFrases__icono_copiar:hover {
-    color: var(--color-noveno);
+    color: var(--color-9);
 }
 
 .listaFrases__icono__encriptar, .listaFrases__icono__desencriptar, .listaFrases__icono__limpiar {
-    color: var(--color-noveno);
+    color: var(--color-9);
     width: 1.1rem;
     height: 1.1rem;
 }
@@ -259,26 +277,54 @@ img {
 }
 
 .footer__redes_general {
-    color: var(--color-sexto);
+    color: var(--color-6);
     width: 1.5rem;
     height: 1.5rem;
     margin-left: 0.5rem;
 }
 
 .footer__redes_general:hover {
-    color: var(--color-octavo);
+    color: var(--color-8);
+}
+
+.color__list {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 0.4rem;
+    margin: 1.5rem;
+}
+
+.color-btn{
+    border-radius: 50%;
+    width: 2rem;
+    height: 2rem;
+    border: none;
+}
+
+
+.color-btn:nth-child(1) {
+    background-color: var(--color-1);
+}
+
+.color-btn:nth-child(2) {
+    background-color: var(--color-4);
+}
+
+.color-btn:nth-child(3) {
+    background-color: var(--color-2);
 }
 
 @media (max-width: 468px) {
    
     .header__menu span {
-        font-size: 0.9rem;
+        font-size: var(--fs-10);
        
     }
     
     .contenido__encriptador__mensaje {
         text-align: center;
-        font-size: 1rem;
+        font-size: var(--fs-9);
     }
     
     .contenido {    
@@ -302,12 +348,12 @@ img {
         justify-content: center;
         text-align: center;
         flex-direction: column;
-        font-size: 1.5rem;
+        font-size: var(--fs-4);
     }
 
     strong {
         text-align: start;
-        font-size: 1.25rem;
+        font-size: var(--fs-5);
     }
 
     footer {
@@ -316,11 +362,11 @@ img {
     }
 
     span {
-        font-size: 1rem;
+        font-size: var(--fs-9);
     }
 
     p {
-        font-size: 0.9rem;
+        font-size: var(--fs-10);
     }
 
     .header__menu {
@@ -337,6 +383,11 @@ img {
         width: 80%;
    }
 
+   .contenido__encriptador__mensaje {
+        font-size: var(--fs-8);
+        text-align: center;
+    }
+
    .contenido__botones {
         flex-direction: column;
         gap: 0.1rem;
@@ -347,13 +398,13 @@ img {
    }
 
    .contenedor {
-        font-size: 1.1rem;
-        padding: 0.8rem;
+        font-size: var(--fs-8);
+        padding: var(--pd-5);
     }
 
     .listaFrases {
         flex-wrap: wrap-reverse;
-        padding: 1rem;
+        padding: var(--pd-3);
         text-align: justify;
     }
 
@@ -370,10 +421,10 @@ img {
 @media (min-width: 769px) and (max-width: 1200px) {
 
     h1 {
-        font-size: 2rem;
+        font-size: var(--fs-2);
     }
     strong {
-        font-size: 1.5rem;
+        font-size: var(--fs-4);
     }
    
     .contenido__encriptador {
