@@ -5,6 +5,11 @@ let btnDesencriptar = document.getElementById('botonDesencriptar');
 let listaFrases = document.getElementById('listaFrases');
 let btnLimpiar = document.getElementById('botonLimpiar');
 
+let header = document.querySelector('header');
+let footer = document.querySelector('footer');
+let parrafo = document.querySelector('p');
+let titulo = document.querySelector('strong');
+
 //Creando Arreglos
 let frases = [];
 let frasesNoEncriptada = [];
@@ -192,3 +197,72 @@ const limpiar = () => {
 }
 
 btnLimpiar.addEventListener('click', limpiar);
+
+
+const setColor = (selector, property, value) => {
+    document.querySelector(selector).style[property] = value;
+};
+
+const setButtonsColor = (buttons, color, textColor) => {
+    buttons.forEach(btn => {
+        btn.style.backgroundColor = color;
+        btn.style.color = textColor;
+        btn.addEventListener('mouseover', () => {
+            btn.style.backgroundColor = "#fff";
+            btn.style.color = "#a9a9a9b7";
+        });
+        btn.addEventListener('mouseout', () => {
+            btn.style.backgroundColor = color;
+            btn.style.color = textColor;
+        });
+    });
+};
+
+/* Falta Mejorar */
+document.querySelectorAll('.color-btn').forEach(button => {
+    button.addEventListener('click', () => {
+        setColor('header', 'backgroundColor', button.getAttribute('data-header-color'));
+        setButtonsColor(document.querySelectorAll('.contenido__botones button'), button.getAttribute('data-btn-color'), 'white');
+        titulo.style.color = button.getAttribute('data-titulo-color');
+        setColor('footer', 'backgroundColor', button.getAttribute('data-footer-color'));
+        setColor('p', 'color', button.getAttribute('data-parrafo-color'));
+        document.querySelectorAll('.footer__redes_general').forEach(element => {
+            element.style.color = button.getAttribute('data-redes-color');
+            // element.addEventListener('mouseover', () => {
+            //     element.style.color = "#a9a9a9b7";
+            // });
+            // element.addEventListener('mouseout', () => {
+            //     element.style.color = "#fff";
+            // });
+        });
+        texto.focus();
+
+        //Animaciones con gsap
+        gsap.from('header ', {
+            opacity: 0,
+            duration: 1,
+            delay: 0.2,
+            y: -100
+        });
+
+        gsap.from('footer p ', {
+            opacity: 0,
+            duration: 1,
+            delay: 0.6,
+            x: 100
+        });
+        gsap.from('.footer__redes', {
+            opacity: 0,
+            duration: 1,
+            delay: 0.7,
+            x: 100
+        });
+
+        gsap.from('.contenido__botones', {
+            opacity: 0,
+            duration: 1,
+            delay: 0.6,
+            x: -100
+        });       
+    });
+});
