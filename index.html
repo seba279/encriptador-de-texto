@@ -25,13 +25,42 @@
             <div class="contenido__encriptador__elementos">
                 <textarea class="contenido__encriptador__elementos__texto" placeholder="Ingrese la frase..." id="textAreaEncriptada" maxlength="800"></textarea>
                 <div class="contenido__botones">
-                    <button type="button" class="contenido__encriptador__elementos__boton" id="botonEncriptar"><i data-feather="save" class="listaFrases__icono__encriptar"></i>Encriptar</button>
-                    <button type="button" class="contenido__desencriptador__boton" id="botonDesencriptar"><i data-feather="unlock" class="listaFrases__icono__desencriptar"></i>Desenriptar</button>
-                    <button type="button" class="contenido__limpiar__boton" id="botonLimpiar"><i data-feather="trash" class="listaFrases__icono__limpiar"></i>Limpiar</button>
+                    <button type="button" class="contenido__encriptador__elementos__boton" id="botonEncriptar">
+                        <i data-feather="save" class="listaFrases__icono__encriptar"></i>
+                        Encriptar
+                    </button>
+                    <button type="button" class="contenido__desencriptador__boton" id="botonDesencriptar">
+                        <i data-feather="unlock" class="listaFrases__icono__desencriptar"></i>
+                        Desenriptar
+                    </button>
+                    <button type="button" class="contenido__limpiar__boton" id="botonLimpiar">
+                        <i data-feather="trash" class="listaFrases__icono__limpiar"></i>
+                        Limpiar
+                    </button>
                 </div>
             </div>
             <div class="contenido__encriptador__mensaje" id="mensaje"></div>
             <div id="listaFrases"></div>
+            <div class="color__list">
+                <button 
+                    class="color-btn" 
+                    data-header-color="#ff0000a7" 
+                    data-titulo-color="#a9a9a9b7" 
+                    data-footer-color="#000000ee" 
+                    data-btn-color="#000000ee" 
+                    data-parrafo-color="#a9a9a9b7" 
+                    data-redes-color="#a9a9a9b7">
+                </button>
+                <button 
+                    class="color-btn" 
+                    data-header-color="#67be9b" 
+                    data-titulo-color="#67be9b" 
+                    data-footer-color="#000000ee" 
+                    data-btn-color="#000000ee" 
+                    data-parrafo-color="#fff" 
+                    data-redes-color="#fff">
+                </button>
+            </div>
         </section>
     </main>
     <footer>
@@ -42,6 +71,10 @@
             <a href="https://www.instagram.com/" target="_blank"><i data-feather="instagram" class="footer__redes_general"></i></a>
         </div>
     </footer>
+
+    <!-- Libreria gsap para animaciones -->
+    <script src = "https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js" ></script> 
+    <script src = "https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollTrigger.min.js" ></script> 
     <script src="./js/app.js"></script>
 </body>
 </html>
