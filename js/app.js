@@ -201,15 +201,15 @@ btnLimpiar.addEventListener('click', limpiar);
 //Creando las animaciones para los diferentes elementos
 const animaciones = () => {
     const elementos = [
-        { selector: 'header', options: { opacity: 0, duration: 1, delay: 0.2, y: -100 } },
-        { selector: 'footer', options: { opacity: 0, duration: 1, delay: 0.3, y: 100 } },
-        { selector: 'footer p', options: { opacity: 0, duration: 1, delay: 0.8, y: 100 } },
-        { selector: '.footer__redes', options: { opacity: 0, duration: 1, delay: 0.8, y: 100 } },
-        { selector: '.contenido__encriptador__elementos__texto', options: { opacity: 0, duration: 1, delay: 0.6, x: -100 } },
-        { selector: '.contenido__encriptador_titulo', options: { opacity: 0, duration: 1, delay: 0.7, y: 100 } },
-        { selector: '.contenido__botones', options: { opacity: 0, duration: 1, delay: 0.6, x: -100 } },
-        { selector: '.listaFrases', options: { opacity: 0, duration: 1, delay: 0.6, x: 100 } },
-        { selector: '.color__list', options: { opacity: 0, duration: 1, delay: 1, x: 100 } }
+        { selector: 'header', options: { opacity: 0, duration: 1, delay: 0.2, y: -50 } },
+        { selector: 'footer', options: { opacity: 0, duration: 1, delay: 0.3, y: 50 } },
+        { selector: 'footer p', options: { opacity: 0, duration: 1, delay: 0.8, y: 50 } },
+        { selector: '.footer__redes', options: { opacity: 0, duration: 1, delay: 0.8, y: 50 } },
+        { selector: '.contenido__encriptador__elementos__texto', options: { opacity: 0, duration: 1, delay: 0.6, x: -50 } },
+        { selector: '.contenido__encriptador_titulo', options: { opacity: 0, duration: 1, delay: 0.7, y: 50 } },
+        { selector: '.contenido__botones', options: { opacity: 0, duration: 1, delay: 0.6, x: -50 } },
+        { selector: '.listaFrases', options: { opacity: 0, duration: 1, delay: 0.6, x: 50 } },
+        { selector: '.color__list', options: { opacity: 0, duration: 1, delay: 1, x: 50 } }
     ];
 
     elementos.forEach(elemento => {
