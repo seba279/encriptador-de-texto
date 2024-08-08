@@ -202,9 +202,9 @@ btnLimpiar.addEventListener('click', limpiar);
 const animaciones = () => {
     const elementos = [
         { selector: 'header', options: { opacity: 0, duration: 1, delay: 0.2, y: -100 } },
-        { selector: 'footer', options: { opacity: 0, duration: 1, delay: 0.3, x: -100 } },
-        { selector: 'footer p', options: { opacity: 0, duration: 1, delay: 0.8, x: 100 } },
-        { selector: '.footer__redes', options: { opacity: 0, duration: 1, delay: 0.8, x: 100 } },
+        { selector: 'footer', options: { opacity: 0, duration: 1, delay: 0.3, y: -100 } },
+        { selector: 'footer p', options: { opacity: 0, duration: 1, delay: 0.8, y: 100 } },
+        { selector: '.footer__redes', options: { opacity: 0, duration: 1, delay: 0.8, y: 100 } },
         { selector: '.contenido__encriptador__elementos__texto', options: { opacity: 0, duration: 1, delay: 0.6, x: -100 } },
         { selector: '.contenido__encriptador_titulo', options: { opacity: 0, duration: 1, delay: 0.7, y: 100 } },
         { selector: '.contenido__botones', options: { opacity: 0, duration: 1, delay: 0.6, x: -100 } },
