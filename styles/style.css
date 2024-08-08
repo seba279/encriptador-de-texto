@@ -335,6 +335,9 @@ img {
 }
 
 @media (max-width: 768px) {
+    body {
+        overflow-x: none;
+    }
     
     h1 {
         display: flex;
