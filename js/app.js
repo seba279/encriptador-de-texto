@@ -218,6 +218,24 @@ const setButtonsColor = (buttons, color, textColor) => {
     });
 };
 
+const animaciones = () => {
+    const elementos = [
+        { selector: 'header', options: { opacity: 0, duration: 1, delay: 0.2, y: -100 } },
+        { selector: 'footer', options: { opacity: 0, duration: 1, delay: 0.3, x: -100 } },
+        { selector: 'footer p', options: { opacity: 0, duration: 1, delay: 0.8, x: 100 } },
+        { selector: '.footer__redes', options: { opacity: 0, duration: 1, delay: 0.8, x: 100 } },
+        { selector: '.contenido__encriptador__elementos__texto', options: { opacity: 0, duration: 1, delay: 0.6, x: -100 } },
+        { selector: '.contenido__encriptador_titulo', options: { opacity: 0, duration: 1, delay: 0.7, y: 100 } },
+        { selector: '.contenido__botones', options: { opacity: 0, duration: 1, delay: 0.6, x: -100 } },
+        { selector: '.listaFrases', options: { opacity: 0, duration: 1, delay: 0.6, x: 100 } },
+        { selector: '.color__list', options: { opacity: 0, duration: 1, delay: 1, x: 100 } }
+    ];
+
+    elementos.forEach(elemento => {
+        gsap.from(elemento.selector, elemento.options);
+    });
+};
+
 /* Falta Mejorar */
 document.querySelectorAll('.color-btn').forEach(button => {
     button.addEventListener('click', () => {
@@ -238,31 +256,6 @@ document.querySelectorAll('.color-btn').forEach(button => {
         texto.focus();
 
         //Animaciones con gsap
-        gsap.from('header ', {
-            opacity: 0,
-            duration: 1,
-            delay: 0.2,
-            y: -100
-        });
-
-        gsap.from('footer p ', {
-            opacity: 0,
-            duration: 1,
-            delay: 0.6,
-            x: 100
-        });
-        gsap.from('.footer__redes', {
-            opacity: 0,
-            duration: 1,
-            delay: 0.7,
-            x: 100
-        });
-
-        gsap.from('.contenido__botones', {
-            opacity: 0,
-            duration: 1,
-            delay: 0.6,
-            x: -100
-        });       
+       animaciones();     
     });
 });
