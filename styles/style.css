@@ -352,8 +352,10 @@ img {
     footer {
         flex-direction: column;
         gap: 0.4rem;
-        height: auto;
-        overflow: visible !important;
+        height: 100%;
+        position: relative;
+        bottom: 0;
+        overflow: none;
     }
 
     span {
