@@ -335,8 +335,9 @@ img {
 }
 
 @media (max-width: 768px) {
-    body {
-        overflow-x: none;
+    html,body {
+        width: 100%!important;
+        overflow-x: hidden!important;
     }
     
     h1 {
