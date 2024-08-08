@@ -352,7 +352,7 @@ img {
     footer {
         flex-direction: column;
         gap: 0.4rem;
-        height: 80%;
+        height: auto;
         position: relative;
         bottom: -1.2rem;
     }
