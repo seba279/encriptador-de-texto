@@ -208,7 +208,7 @@ const animaciones = () => {
         { selector: '.contenido__encriptador__elementos__texto', options: { opacity: 0, duration: 1, delay: 0.6, x: -50 } },
         { selector: '.contenido__encriptador_titulo', options: { opacity: 0, duration: 1, delay: 0.7, y: 50 } },
         { selector: '.contenido__botones', options: { opacity: 0, duration: 1, delay: 0.6, x: -50 } },
-        { selector: '.listaFrases', options: { opacity: 0, duration: 1, delay: 0.6, x: 50 } },
+        { selector: '.listaFrases', options: { opacity: 0, duration: 1, delay: 0.6, x: 30 } },
         { selector: '.color__list', options: { opacity: 0, duration: 1, delay: 1, x: 50 } }
     ];
 
