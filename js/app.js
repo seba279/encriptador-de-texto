@@ -198,26 +198,7 @@ const limpiar = () => {
 
 btnLimpiar.addEventListener('click', limpiar);
 
-
-const setColor = (selector, property, value) => {
-    document.querySelector(selector).style[property] = value;
-};
-
-const setButtonsColor = (buttons, color, textColor) => {
-    buttons.forEach(btn => {
-        btn.style.backgroundColor = color;
-        btn.style.color = textColor;
-        btn.addEventListener('mouseover', () => {
-            btn.style.backgroundColor = "#fff";
-            btn.style.color = "#a9a9a9b7";
-        });
-        btn.addEventListener('mouseout', () => {
-            btn.style.backgroundColor = color;
-            btn.style.color = textColor;
-        });
-    });
-};
-
+//Creando las animaciones para los diferentes elementos
 const animaciones = () => {
     const elementos = [
         { selector: 'header', options: { opacity: 0, duration: 1, delay: 0.2, y: -100 } },
@@ -236,26 +217,35 @@ const animaciones = () => {
     });
 };
 
-/* Falta Mejorar */
+
+// Cambiando los estilos
+const aplicandoEstilos = (selector, styles) => {
+    document.querySelectorAll(selector).forEach(elemento => {
+        Object.assign(elemento.style, styles);
+    });
+};
+ 
 document.querySelectorAll('.color-btn').forEach(button => {
     button.addEventListener('click', () => {
-        setColor('header', 'backgroundColor', button.getAttribute('data-header-color'));
-        setButtonsColor(document.querySelectorAll('.contenido__botones button'), button.getAttribute('data-btn-color'), 'white');
-        titulo.style.color = button.getAttribute('data-titulo-color');
-        setColor('footer', 'backgroundColor', button.getAttribute('data-footer-color'));
-        setColor('p', 'color', button.getAttribute('data-parrafo-color'));
-        document.querySelectorAll('.footer__redes_general').forEach(element => {
-            element.style.color = button.getAttribute('data-redes-color');
-            // element.addEventListener('mouseover', () => {
-            //     element.style.color = "#a9a9a9b7";
-            // });
-            // element.addEventListener('mouseout', () => {
-            //     element.style.color = "#fff";
-            // });
+        const getColor = attr => button.getAttribute(attr);
+        
+        aplicandoEstilos('header', { backgroundColor: getColor('data-header-color') });
+        aplicandoEstilos('.contenido__botones button', {
+            backgroundColor: getColor('data-btn-color'),
+            color: 'white'
         });
-        texto.focus();
 
-        //Animaciones con gsap
-       animaciones();     
+        document.querySelectorAll('.contenido__botones button').forEach(btn => {
+            btn.addEventListener('mouseover', () => aplicandoEstilos(btn, { backgroundColor: '#fff', color: '#a9a9a9b7' }));
+            btn.addEventListener('mouseout', () => aplicandoEstilos(btn, { backgroundColor: getColor('data-btn-color'), color: 'white' }));
+        });
+
+        titulo.style.color = getColor('data-titulo-color');
+        aplicandoEstilos('footer', { backgroundColor: getColor('data-footer-color') });
+        aplicandoEstilos('p', { color: getColor('data-parrafo-color') });
+        aplicandoEstilos('.footer__redes_general', { color: getColor('data-redes-color') });
+
+        // Animaciones
+        animaciones();
     });
 });
