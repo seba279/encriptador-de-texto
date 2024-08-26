@@ -194,6 +194,7 @@ const limpiar = () => {
     texto.removeAttribute("disabled");
     texto.focus(); 
     texto.value = "";
+    animaciones();
 }
 
 btnLimpiar.addEventListener('click', limpiar);
