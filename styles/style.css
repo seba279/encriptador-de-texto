@@ -402,7 +402,7 @@ img {
     .listaFrases {
         flex-wrap: wrap-reverse;
         padding: var(--pd-3);
-        text-align: justify;
+        text-align: center;
     }
 
     .contenido__desencriptador__boton, .contenido__encriptador__elementos__boton, .contenido__limpiar__boton {
